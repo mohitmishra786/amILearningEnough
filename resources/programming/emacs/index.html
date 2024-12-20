@@ -1,0 +1,3241 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../c/">
+      
+      
+        <link rel="next" href="../../reverse-engineering/re-and-be/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Emacs - Am I Learning Enough</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gnu-emacs-cheatsheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Am I Learning Enough" class="md-header__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Am I Learning Enough
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Emacs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly/asm/" class="md-tabs__link">
+          
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../roadmap/dsa/dsa/" class="md-tabs__link">
+          
+  
+    
+  
+  Roadmaps
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Am I Learning Enough" class="md-nav__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Am I Learning Enough
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly/asm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cheatsheets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cheatsheets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/riscv-32bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RISC-V 32-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computerArchitecture/compArch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cybersecurity/cybsec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cybersecurity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/bpftrace-eBPF-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BPF Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-networking-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-perf-benchmark-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-performace-tuning-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tuning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-static-performace-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Static Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/sed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/unix-file-system-hierarachy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/underTheHoodOfNeuralNetwork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cacheMemory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/conceptOfVirtualMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept of Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/contiguousMemAlloc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contiguous Memory Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskFragmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Fragmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/distributedSystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributed Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/embeddedOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedded OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystemImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/freeSpaceManagement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Space Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputHardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputSoftware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputTechniques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Techniques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/kernelIOSubsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel I/O Subsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/layeredArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/logicalVsPhysicalAddresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical vs Physical Addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/memoryMappedFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Mapped Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/microKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microkernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/monolithicKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monolithic Kernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/osDesignAndImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Design and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/pageReplacementAlgo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page Replacement Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/paging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processAndThreads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process and Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processManagementStructures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Management Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processScheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/protectionInOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protection in OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/realTimeOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-time OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityMechanism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityThreatsAndAttacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Threats and Attacks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/softwareLayers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/systemCalls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/thrashing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thrashing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/vonNeumannArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Von Neumann Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Emacs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Emacs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#emacs-commands-relation-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emacs Commands Relation Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Notation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigation Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Word Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Boundaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-paste-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy &amp; Paste Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Copy & Paste Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-emacs-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional Emacs Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modern-style-cua-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern Style (CUA Mode)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undo-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undo Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-frames-and-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows, Frames, and Buffers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows, Frames, and Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffer Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emergency-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-navigation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Navigation Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-new-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for New Users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Management Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-editing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Editing Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Management Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reverse-engineering/re-and-be/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../univCourses/univ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    University Courses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmaps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Roadmaps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsaUsingC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA using C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/ml/neuralNetsWithC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks with C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OS Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            OS Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/knowC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    With C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/noC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Without C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/reverse-engineering/reverse-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#emacs-commands-relation-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emacs Commands Relation Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Notation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigation-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigation Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Word Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Line Boundaries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-paste-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy &amp; Paste Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Copy & Paste Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-emacs-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional Emacs Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modern-style-cua-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern Style (CUA Mode)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undo-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undo Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-frames-and-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows, Frames, and Buffers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows, Frames, and Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Split Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffer Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emergency-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-navigation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Navigation Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-new-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for New Users
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Management Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-editing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Editing Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-management-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Window Management Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="gnu-emacs-cheatsheet">GNU Emacs Cheatsheet</h1>
+<h2 id="emacs-commands-relation-diagram">Emacs Commands Relation Diagram</h2>
+<p><a href="https://mermaid.live/edit#pako:eNqNll2PmzgUQP-KRdWqK000JSRth4eVWqZVqi2UbdIirdMHB0xiDV_CMElU9b_vvTZJKcWi88AE-_gaH-41_m7FZcIt19rXrDqQj5-3BYG_p0-Jz0RBPNbwfVkLLslRNAeybs6ZKPYaijMm5T1PSaypM0lFlrlPuJ0uU34jm7p84O6TF_by1d2uu50dRdIc3Hl1GsSQ7W4QJnX4Ml1ewyyYvXgd_xrG_i1MXOY5K5JLCDt9ze-uIRzn5Z3NDSH09V3OYvlcXYmnY8m_XNe9PFufBUnvRcbJp4rXrBFlIcm63SmRGpDdncIkHcDfNIR_73XfZcJvMGHPR4-zqTc7EW-WuhioQLBbcQ-ad5B0yZo98nHI6aCjhsgbOc4tOu7BJV5WSkO0ZUfFLvm3Fc0o1MPJbPY3LIY8g4fFi4OXBV6WmuKXgVfTG35q_sA0YnTA9kRvdN-k6I1N1zzjMY53UWXF4vGlb-b0nkvFIrgfhxz6pUhKBG4n3GyUmw262aCbjWMyErBHsVcrNMkAgv6kehoC6pePPOfFH6gIbPpRFFziw1e33mw86QJIugOrFbUDKh2nHBqVdQKUD5RvohZqRthsWN3cvisSDMogKJ9wFyh3AboL0F2AeRUsTAK9TFS7ktWJyR8C9Er1_HnUK6szBA-ZbLhRnWfTTc0SgfZZZsbA3Zc3xIeN2Mj0aMhNr1XJdhz14UFK4uOhZBPhUPXkGOQ8IdXzr_OdxqP5l_mg_g1Eb77HqfnUS_TwJXrzvkvdrirDU6XhXWpDS9T9vur3Vb9vrJ1IQDkejbsIdNML8oy8bdOU1_1tJOp6p6sngo2kykRDvuLandG1R_OOWSEzH2ccGpREYQjZ49CCfuY5VDYiL8aRJf3UHHjdGUCwnHghkRIbodcItUZYVRHu1pFxtw5Z_MD2HA4RBfxTG41BNZL0d7wnO7x2T9oOca-SDWb-iWTwa1bpoeMft1Dt3XEtdlwPSbq7y7DxUQ79UMiGwQFDDerYmdCNEzZDZTNEmyHaDI05uuJZRdZnKJvcJA8R2uN61la6fVLZyqb_8LOKhMlwIA-jC1jN6VvIGDj7SY3tJta5Uutc4TpXc9MS1RkzLotCf2ll7wymjwh4bho24hd82AZfuWET7tvDNkj6YRPm1rANZVg3Vs7rnIkEDsffkdhaUDg531ou_Ex4ytqs2Vrb4gegrG3K9bmILbepW35j1WW7P1xu2ioB7feCwUvLLTdlmYTWihX_lWWuoR__A-hhZFE"><img alt="" src="https://mermaid.ink/img/pako:eNqNll2PmzgUQP-KRdWqK000JSRth4eVWqZVqi2UbdIirdMHB0xiDV_CMElU9b_vvTZJKcWi88AE-_gaH-41_m7FZcIt19rXrDqQj5-3BYG_p0-Jz0RBPNbwfVkLLslRNAeybs6ZKPYaijMm5T1PSaypM0lFlrlPuJ0uU34jm7p84O6TF_by1d2uu50dRdIc3Hl1GsSQ7W4QJnX4Ml1ewyyYvXgd_xrG_i1MXOY5K5JLCDt9ze-uIRzn5Z3NDSH09V3OYvlcXYmnY8m_XNe9PFufBUnvRcbJp4rXrBFlIcm63SmRGpDdncIkHcDfNIR_73XfZcJvMGHPR4-zqTc7EW-WuhioQLBbcQ-ad5B0yZo98nHI6aCjhsgbOc4tOu7BJV5WSkO0ZUfFLvm3Fc0o1MPJbPY3LIY8g4fFi4OXBV6WmuKXgVfTG35q_sA0YnTA9kRvdN-k6I1N1zzjMY53UWXF4vGlb-b0nkvFIrgfhxz6pUhKBG4n3GyUmw262aCbjWMyErBHsVcrNMkAgv6kehoC6pePPOfFH6gIbPpRFFziw1e33mw86QJIugOrFbUDKh2nHBqVdQKUD5RvohZqRthsWN3cvisSDMogKJ9wFyh3AboL0F2AeRUsTAK9TFS7ktWJyR8C9Er1_HnUK6szBA-ZbLhRnWfTTc0SgfZZZsbA3Zc3xIeN2Mj0aMhNr1XJdhz14UFK4uOhZBPhUPXkGOQ8IdXzr_OdxqP5l_mg_g1Eb77HqfnUS_TwJXrzvkvdrirDU6XhXWpDS9T9vur3Vb9vrJ1IQDkejbsIdNML8oy8bdOU1_1tJOp6p6sngo2kykRDvuLandG1R_OOWSEzH2ccGpREYQjZ49CCfuY5VDYiL8aRJf3UHHjdGUCwnHghkRIbodcItUZYVRHu1pFxtw5Z_MD2HA4RBfxTG41BNZL0d7wnO7x2T9oOca-SDWb-iWTwa1bpoeMft1Dt3XEtdlwPSbq7y7DxUQ79UMiGwQFDDerYmdCNEzZDZTNEmyHaDI05uuJZRdZnKJvcJA8R2uN61la6fVLZyqb_8LOKhMlwIA-jC1jN6VvIGDj7SY3tJta5Uutc4TpXc9MS1RkzLotCf2ll7wymjwh4bho24hd82AZfuWET7tvDNkj6YRPm1rANZVg3Vs7rnIkEDsffkdhaUDg531ou_Ex4ytqs2Vrb4gegrG3K9bmILbepW35j1WW7P1xu2ioB7feCwUvLLTdlmYTWihX_lWWuoR__A-hhZFE?type=png" /></a></p>
+<h2 id="key-notation">Key Notation</h2>
+<ul>
+<li><code>C-</code> means hold the Control key</li>
+<li><code>M-</code> means hold the Alt key (Meta) or press and release Escape</li>
+<li><code>C-x</code> means press Control and 'x' together</li>
+<li><code>M-x</code> means press Alt and 'x' together or press Escape then 'x'</li>
+</ul>
+<h2 id="file-operations">File Operations</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-x C-f</code></td>
+<td>Open a file</td>
+</tr>
+<tr>
+<td><code>C-x C-s</code></td>
+<td>Save current file</td>
+</tr>
+<tr>
+<td><code>C-x C-w</code></td>
+<td>Save as...</td>
+</tr>
+<tr>
+<td><code>C-x C-k</code></td>
+<td>Close file</td>
+</tr>
+<tr>
+<td><code>C-x C-c</code></td>
+<td>Quit Emacs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-selection">Text Selection</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-&lt;space&gt;</code> or <code>C-@</code></td>
+<td>Start selection</td>
+</tr>
+<tr>
+<td><code>C-g</code></td>
+<td>Deselect</td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigation-commands">Navigation Commands</h2>
+<h3 id="line-navigation">Line Navigation</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-p</code></td>
+<td>Move to previous line</td>
+</tr>
+<tr>
+<td><code>C-n</code></td>
+<td>Move to next line</td>
+</tr>
+</tbody>
+</table>
+<h3 id="character-navigation">Character Navigation</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-b</code></td>
+<td>Move back one character</td>
+</tr>
+<tr>
+<td><code>C-f</code></td>
+<td>Move forward one character</td>
+</tr>
+</tbody>
+</table>
+<h3 id="word-navigation">Word Navigation</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M-b</code></td>
+<td>Move back one word</td>
+</tr>
+<tr>
+<td><code>M-f</code></td>
+<td>Move forward one word</td>
+</tr>
+</tbody>
+</table>
+<h3 id="line-boundaries">Line Boundaries</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-a</code></td>
+<td>Go to start of line</td>
+</tr>
+<tr>
+<td><code>C-e</code></td>
+<td>Go to end of line</td>
+</tr>
+</tbody>
+</table>
+<h2 id="copy-paste-operations">Copy &amp; Paste Operations</h2>
+<h3 id="traditional-emacs-style">Traditional Emacs Style</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-w</code></td>
+<td>Cut (Kill)</td>
+</tr>
+<tr>
+<td><code>M-w</code></td>
+<td>Copy</td>
+</tr>
+<tr>
+<td><code>C-y</code></td>
+<td>Paste (Yank)</td>
+</tr>
+<tr>
+<td><code>C-k</code></td>
+<td>Cut line after cursor</td>
+</tr>
+<tr>
+<td><code>M-d</code></td>
+<td>Cut word after cursor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modern-style-cua-mode">Modern Style (CUA Mode)</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M-x cua-mode</code></td>
+<td>Activate modern copy &amp; paste</td>
+</tr>
+<tr>
+<td><code>C-x</code></td>
+<td>Cut</td>
+</tr>
+<tr>
+<td><code>C-c</code></td>
+<td>Copy</td>
+</tr>
+<tr>
+<td><code>C-v</code></td>
+<td>Paste</td>
+</tr>
+</tbody>
+</table>
+<h2 id="undo-operations">Undo Operations</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-/</code> or <code>C-x u</code></td>
+<td>Undo last operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows-frames-and-buffers">Windows, Frames, and Buffers</h2>
+<h3 id="split-operations">Split Operations</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-3</code></td>
+<td>Split window vertically</td>
+</tr>
+<tr>
+<td><code>C-2</code></td>
+<td>Split window horizontally</td>
+</tr>
+<tr>
+<td><code>C-1</code></td>
+<td>Remove all splits (single window)</td>
+</tr>
+<tr>
+<td><code>C-0</code></td>
+<td>Remove current window</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buffer-management">Buffer Management</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-x &lt;arrow&gt;</code></td>
+<td>Cycle through active buffers</td>
+</tr>
+<tr>
+<td><code>C-o</code></td>
+<td>Visit other split window</td>
+</tr>
+</tbody>
+</table>
+<h3 id="frame-management">Frame Management</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-x 52</code></td>
+<td>Open a new frame</td>
+</tr>
+</tbody>
+</table>
+<h2 id="emergency-commands">Emergency Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-g</code></td>
+<td>Cancel current operation/command</td>
+</tr>
+</tbody>
+</table>
+<h2 id="help-system">Help System</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C-h k &lt;key combo&gt;</code></td>
+<td>Show key combination binding</td>
+</tr>
+<tr>
+<td><code>C-h b</code></td>
+<td>Display all key bindings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="package-management">Package Management</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M-x list-packages</code></td>
+<td>List all available packages</td>
+</tr>
+<tr>
+<td><code>M-x describe-package</code></td>
+<td>Describe package at cursor</td>
+</tr>
+<tr>
+<td><code>M-x package-menu-mark-install</code></td>
+<td>Mark package for installation</td>
+</tr>
+<tr>
+<td><code>M-x package-install-selected-packages</code></td>
+<td>Install marked packages</td>
+</tr>
+</tbody>
+</table>
+<h2 id="important-concepts">Important Concepts</h2>
+<ol>
+<li><strong>Buffer</strong>: Holds a process or file content</li>
+<li><strong>Window</strong>: Your view of a buffer</li>
+<li><strong>Frame</strong>: The desktop window containing Emacs</li>
+</ol>
+<h2 id="additional-navigation-methods">Additional Navigation Methods</h2>
+<ul>
+<li>Use arrow keys for cursor movement if available</li>
+<li>Use mouse to click and drag for text selection</li>
+</ul>
+<h2 id="tips-for-new-users">Tips for New Users</h2>
+<ol>
+<li>Start with basic file operations and navigation</li>
+<li>Learn the help system commands early</li>
+<li>Consider using CUA mode if coming from other editors</li>
+<li>Practice emergency cancel (<code>C-g</code>) for when things go wrong</li>
+<li>Use package management to extend functionality</li>
+</ol>
+<h2 id="customization-basics">Customization Basics</h2>
+<pre><code class="language-elisp">;; Add to your .emacs file or init.el
+;; Enable CUA mode for familiar copy-paste
+(cua-mode t)
+
+;; Enable line numbers
+(global-display-line-numbers-mode)
+
+;; Enable syntax highlighting
+(global-font-lock-mode t)
+</code></pre>
+<h2 id="common-workflows">Common Workflows</h2>
+<h3 id="file-management-workflow">File Management Workflow</h3>
+<ol>
+<li>Open Emacs</li>
+<li>Use <code>C-x C-f</code> to find file</li>
+<li>Edit content</li>
+<li>Save with <code>C-x C-s</code></li>
+<li>Close with <code>C-x C-k</code> or quit Emacs with <code>C-x C-c</code></li>
+</ol>
+<h3 id="text-editing-workflow">Text Editing Workflow</h3>
+<ol>
+<li>Navigate to location</li>
+<li>Start selection with <code>C-&lt;space&gt;</code></li>
+<li>Move cursor to select text</li>
+<li>Cut/copy as needed</li>
+<li>Navigate to new location</li>
+<li>Paste content</li>
+</ol>
+<h3 id="window-management-workflow">Window Management Workflow</h3>
+<ol>
+<li>Split window as needed (<code>C-2</code> or <code>C-3</code>)</li>
+<li>Open different files in splits</li>
+<li>Use <code>C-o</code> to switch between splits</li>
+<li>Close splits when done (<code>C-0</code> or <code>C-1</code>)</li>
+</ol>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li>Learn the help system first</li>
+<li>Practice navigation commands</li>
+<li>Use package management for extensions</li>
+<li>Learn buffer management</li>
+<li>Master window splitting</li>
+<li>Understand the difference between kill/yank and modern copy/paste</li>
+<li>Keep emergency commands in mind</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

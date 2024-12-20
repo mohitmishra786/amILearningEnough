@@ -1,0 +1,3648 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../linux-performace-tuning-tools/">
+      
+      
+        <link rel="next" href="../sed/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Static Performance Tools - Am I Learning Enough</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-static-performance-tools-cheatsheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Am I Learning Enough" class="md-header__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Am I Learning Enough
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Static Performance Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly/asm/" class="md-tabs__link">
+          
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../roadmap/dsa/dsa/" class="md-tabs__link">
+          
+  
+    
+  
+  Roadmaps
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Am I Learning Enough" class="md-nav__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Am I Learning Enough
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly/asm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cheatsheets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cheatsheets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/riscv-32bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RISC-V 32-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computerArchitecture/compArch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cybersecurity/cybsec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cybersecurity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bpftrace-eBPF-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BPF Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-networking-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-perf-benchmark-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-performace-tuning-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tuning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Static Performance Tools
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Static Performance Tools
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-layer-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Layer Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Layer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-analysis-tools-by-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Analysis Tools by Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Analysis Tools by Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Analysis Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating System Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Analysis Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-call-interface-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Call Interface Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduler Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-library-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Library Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-tool-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Tool Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Tool Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-information-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Information Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Information Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sysctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      sysctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmesg" class="md-nav__link">
+    <span class="md-ellipsis">
+      dmesg
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-performance-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Performance Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Performance Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smartctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      smartctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iostat" class="md-nav__link">
+    <span class="md-ellipsis">
+      iostat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-performance-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Performance Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Performance Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tc-traffic-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      tc (Traffic Control)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schedtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      schedtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numact1" class="md-nav__link">
+    <span class="md-ellipsis">
+      numact1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-memory-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Memory Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Memory Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      vmstat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Analysis Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Analysis Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemtap" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemTap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perf" class="md-nav__link">
+    <span class="md-ellipsis">
+      perf
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dmidecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      dmidecode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#megacli" class="md-nav__link">
+    <span class="md-ellipsis">
+      MegaCli
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-performance-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Performance Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unix-file-system-hierarachy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/underTheHoodOfNeuralNetwork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cacheMemory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/conceptOfVirtualMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept of Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/contiguousMemAlloc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contiguous Memory Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskFragmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Fragmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/distributedSystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributed Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/embeddedOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedded OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystemImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/freeSpaceManagement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Space Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputHardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputSoftware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputTechniques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Techniques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/kernelIOSubsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel I/O Subsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/layeredArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/logicalVsPhysicalAddresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical vs Physical Addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/memoryMappedFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Mapped Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/microKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microkernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/monolithicKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monolithic Kernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/osDesignAndImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Design and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/pageReplacementAlgo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page Replacement Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/paging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processAndThreads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process and Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processManagementStructures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Management Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processScheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/protectionInOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protection in OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/realTimeOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-time OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityMechanism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityThreatsAndAttacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Threats and Attacks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/softwareLayers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/systemCalls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/thrashing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thrashing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/vonNeumannArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Von Neumann Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/emacs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emacs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reverse-engineering/re-and-be/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../univCourses/univ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    University Courses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmaps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Roadmaps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsaUsingC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA using C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/ml/neuralNetsWithC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks with C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OS Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            OS Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/knowC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    With C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/noC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Without C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/reverse-engineering/reverse-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-layer-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Layer Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Layer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-analysis-tools-by-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Analysis Tools by Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Analysis Tools by Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Analysis Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating System Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-system-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Analysis Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-call-interface-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Call Interface Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduler-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheduler Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-level-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Level Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Level Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-library-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Library Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-tool-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Tool Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Tool Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-information-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Information Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Information Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sysctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      sysctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmesg" class="md-nav__link">
+    <span class="md-ellipsis">
+      dmesg
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-performance-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Performance Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Performance Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smartctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      smartctl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iostat" class="md-nav__link">
+    <span class="md-ellipsis">
+      iostat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-performance-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Performance Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Performance Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tc-traffic-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      tc (Traffic Control)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schedtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      schedtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numact1" class="md-nav__link">
+    <span class="md-ellipsis">
+      numact1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-memory-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Memory Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Memory Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      vmstat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Analysis Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Analysis Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemtap" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemTap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perf" class="md-nav__link">
+    <span class="md-ellipsis">
+      perf
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dmidecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      dmidecode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume Management Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume Management Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#megacli" class="md-nav__link">
+    <span class="md-ellipsis">
+      MegaCli
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-performance-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Performance Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-reference-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="linux-static-performance-tools-cheatsheet">Linux Static Performance Tools Cheatsheet</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#system-architecture-overview">System Architecture Overview</a></li>
+<li><a href="#performance-analysis-tools-by-layer">Performance Analysis Tools by Layer</a></li>
+<li><a href="#hardware-layer-tools">Hardware Layer Tools</a></li>
+<li><a href="#operating-system-layer-tools">Operating System Layer Tools</a></li>
+<li><a href="#application-layer-tools">Application Layer Tools</a></li>
+<li><a href="#detailed-tool-reference">Detailed Tool Reference</a></li>
+</ol>
+<h2 id="system-architecture-overview">System Architecture Overview</h2>
+<p>The Linux system architecture consists of multiple layers, each with specific performance monitoring and analysis tools. Here's a detailed breakdown of each layer and its components:</p>
+<h3 id="hardware-layer">Hardware Layer</h3>
+<ul>
+<li>CPUs</li>
+<li>DRAM</li>
+<li>I/O Controllers</li>
+<li>Network Controllers</li>
+<li>Storage Devices</li>
+</ul>
+<h3 id="operating-system-layer-components">Operating System Layer Components</h3>
+<ol>
+<li>Device Drivers</li>
+<li>Block Device</li>
+<li>Network Device</li>
+<li>Virtual Memory</li>
+<li>File Systems</li>
+<li>TCP/UDP</li>
+<li>IP Stack</li>
+<li>System Call Interface</li>
+<li>Scheduler</li>
+<li>Clock Source</li>
+</ol>
+<h3 id="application-layer">Application Layer</h3>
+<ul>
+<li>Applications</li>
+<li>System Libraries</li>
+<li>VFS (Virtual File System)</li>
+<li>Sockets</li>
+</ul>
+<h2 id="performance-analysis-tools-by-layer">Performance Analysis Tools by Layer</h2>
+<h3 id="hardware-level-tools">Hardware Level Tools</h3>
+<h4 id="cpu-analysis-tools">CPU Analysis Tools</h4>
+<pre><code class="language-bash"># CPU information and statistics
+/proc/cpuinfo    # Detailed CPU information
+cpuid            # CPU identification and features
+lscpu            # CPU architecture information
+cpu-x            # CPU identification tool
+
+# CPU Performance Monitoring
+numact1          # NUMA topology and statistics
+lstopo           # Hardware topology viewer
+dmidecode        # DMI table decoder
+</code></pre>
+<h4 id="memory-analysis">Memory Analysis</h4>
+<pre><code class="language-bash"># Memory statistics and information
+free -m          # Memory usage overview
+vmstat           # Virtual memory statistics
+dmidecode        # Memory hardware information
+
+# Memory Performance Tools
+lstopo           # Memory topology visualization
+numact1          # NUMA memory statistics
+</code></pre>
+<h3 id="operating-system-level-tools">Operating System Level Tools</h3>
+<h4 id="file-system-tools">File System Tools</h4>
+<pre><code class="language-bash"># Disk and Filesystem Analysis
+df -h            # Filesystem usage
+lsblk            # Block device information
+blockdev         # Block device operations
+smartctl         # SMART disk monitoring
+fdisk -l         # Disk partition information
+lsusb            # USB device information
+
+# Advanced Storage Analysis
+mdadm            # RAID management and monitoring
+dmesg            # Storage device messages
+</code></pre>
+<h4 id="network-analysis-tools">Network Analysis Tools</h4>
+<pre><code class="language-bash"># Basic Network Tools
+ip route         # IP routing table
+tc              # Traffic control
+ethtool         # Network interface settings
+iwconfig        # Wireless interface configuration
+lldptool        # Link Layer Discovery Protocol tool
+
+# Network Statistics
+netstat         # Network statistics
+ss              # Socket statistics
+ip              # IP configuration and statistics
+</code></pre>
+<h4 id="system-call-interface-tools">System Call Interface Tools</h4>
+<pre><code class="language-bash"># System Call Monitoring
+strace          # System call tracer
+ltrace          # Library call tracer
+syscall         # System call information
+sysctl          # Kernel parameter configuration
+</code></pre>
+<h4 id="scheduler-analysis">Scheduler Analysis</h4>
+<pre><code class="language-bash"># Scheduler Tools
+schedtool       # Process scheduler configuration
+chrt            # Real-time scheduler priorities
+taskset         # CPU affinity configuration
+</code></pre>
+<h3 id="application-level-tools">Application Level Tools</h3>
+<h4 id="process-analysis">Process Analysis</h4>
+<pre><code class="language-bash"># Process Monitoring
+top             # Process activity monitoring
+htop            # Interactive process viewer
+ps              # Process status
+pstree          # Process hierarchy view
+</code></pre>
+<h4 id="system-library-analysis">System Library Analysis</h4>
+<pre><code class="language-bash"># Library Tools
+ldd             # Shared library dependencies
+ldconfig        # Library path configuration
+ld              # Link editor for object files
+</code></pre>
+<h2 id="detailed-tool-reference">Detailed Tool Reference</h2>
+<h3 id="system-information-tools">System Information Tools</h3>
+<h4 id="sysctl">sysctl</h4>
+<pre><code class="language-bash"># View all system parameters
+sysctl -a
+
+# View specific parameter
+sysctl kernel.hostname
+
+# Modify parameter
+sysctl -w kernel.hostname=newname
+
+# Load settings from file
+sysctl -p /etc/sysctl.conf
+</code></pre>
+<h4 id="dmesg">dmesg</h4>
+<pre><code class="language-bash"># View kernel messages
+dmesg
+
+# Clear kernel ring buffer
+dmesg -c
+
+# Show human-readable timestamps
+dmesg -T
+
+# Follow new messages
+dmesg -w
+</code></pre>
+<h3 id="storage-performance-tools">Storage Performance Tools</h3>
+<h4 id="smartctl">smartctl</h4>
+<pre><code class="language-bash"># Check disk health
+smartctl -a /dev/sda
+
+# Run short self-test
+smartctl -t short /dev/sda
+
+# Show test results
+smartctl -l selftest /dev/sda
+
+# Enable SMART
+smartctl -s on /dev/sda
+</code></pre>
+<h4 id="iostat">iostat</h4>
+<pre><code class="language-bash"># Basic I/O statistics
+iostat
+
+# Extended statistics
+iostat -x
+
+# Device utilization
+iostat -d
+
+# Updates every 2 seconds
+iostat 2
+</code></pre>
+<h3 id="network-performance-tools">Network Performance Tools</h3>
+<h4 id="ethtool">ethtool</h4>
+<pre><code class="language-bash"># Show interface settings
+ethtool eth0
+
+# Show interface statistics
+ethtool -S eth0
+
+# Set interface speed
+ethtool -s eth0 speed 1000
+
+# Check link status
+ethtool -i eth0
+</code></pre>
+<h4 id="tc-traffic-control">tc (Traffic Control)</h4>
+<pre><code class="language-bash"># Show queueing discipline
+tc qdisc show
+
+# Add rate limiting
+tc qdisc add dev eth0 root tbf rate 1mbit burst 32kbit latency 400ms
+
+# Show filter rules
+tc filter show dev eth0
+
+# Delete all rules
+tc qdisc del dev eth0 root
+</code></pre>
+<h3 id="process-management-tools">Process Management Tools</h3>
+<h4 id="schedtool">schedtool</h4>
+<pre><code class="language-bash"># Show process scheduler info
+schedtool -p 1234
+
+# Set SCHED_FIFO policy
+schedtool -F -p 50 1234
+
+# Set CPU affinity
+schedtool -a 0-3 1234
+
+# Show all scheduler policies
+schedtool -h
+</code></pre>
+<h4 id="numact1">numact1</h4>
+<pre><code class="language-bash"># Show NUMA topology
+numactl --hardware
+
+# Run command on specific node
+numactl --membind=0 command
+
+# Show NUMA statistics
+numactl --show
+
+# Set memory policy
+numactl --preferred=0 command
+</code></pre>
+<h3 id="virtual-memory-analysis">Virtual Memory Analysis</h3>
+<h4 id="vmstat">vmstat</h4>
+<pre><code class="language-bash"># Memory statistics
+vmstat
+
+# Detailed memory info
+vmstat -s
+
+# Active/inactive memory
+vmstat -a
+
+# Disk statistics
+vmstat -d
+</code></pre>
+<h3 id="advanced-analysis-tools">Advanced Analysis Tools</h3>
+<h4 id="systemtap">SystemTap</h4>
+<pre><code class="language-bash"># Create simple probe
+stap -e 'probe syscall.open { println(execname()) }'
+
+# Monitor file operations
+stap -e 'probe vfs.read { printf(&quot;%s read %d bytes\n&quot;, execname(), count) }'
+
+# Track process creation
+stap -e 'probe process.begin { printf(&quot;%s started\n&quot;, execname()) }'
+</code></pre>
+<h4 id="perf">perf</h4>
+<pre><code class="language-bash"># CPU performance counters
+perf stat command
+
+# System-wide sampling
+perf record -a sleep 10
+
+# Show recorded data
+perf report
+
+# Live performance monitoring
+perf top
+</code></pre>
+<h3 id="hardware-management">Hardware Management</h3>
+<h4 id="dmidecode">dmidecode</h4>
+<pre><code class="language-bash"># Show all hardware info
+dmidecode
+
+# Show memory info
+dmidecode -t memory
+
+# Show CPU info
+dmidecode -t processor
+
+# Show system info
+dmidecode -t system
+</code></pre>
+<h3 id="volume-management-tools">Volume Management Tools</h3>
+<h4 id="megacli">MegaCli</h4>
+<pre><code class="language-bash"># Show RAID configuration
+MegaCli -CfgDsply -aALL
+
+# Check battery status
+MegaCli -AdpBbuCmd -aALL
+
+# Show drive information
+MegaCli -PDList -aALL
+
+# Check rebuild status
+MegaCli -PDRbld -ShowProg -physdrv[252:2] -aALL
+</code></pre>
+<h3 id="performance-monitoring-best-practices">Performance Monitoring Best Practices</h3>
+<ol>
+<li><strong>Regular Monitoring</strong></li>
+<li>Set up baseline measurements</li>
+<li>Monitor trends over time</li>
+<li>
+<p>Create alerts for anomalies</p>
+</li>
+<li>
+<p><strong>Resource Usage</strong></p>
+</li>
+<li>Track CPU utilization</li>
+<li>Monitor memory consumption</li>
+<li>Watch I/O patterns</li>
+<li>
+<p>Analyze network traffic</p>
+</li>
+<li>
+<p><strong>System Health</strong></p>
+</li>
+<li>Check system logs</li>
+<li>Monitor hardware status</li>
+<li>Track error rates</li>
+<li>
+<p>Verify service status</p>
+</li>
+<li>
+<p><strong>Performance Optimization</strong></p>
+</li>
+<li>Identify bottlenecks</li>
+<li>Tune system parameters</li>
+<li>Optimize application settings</li>
+<li>Balance resource allocation</li>
+</ol>
+<h3 id="common-performance-issues-and-solutions">Common Performance Issues and Solutions</h3>
+<ol>
+<li><strong>CPU Bottlenecks</strong></li>
+<li>Use <code>top</code> and <code>htop</code> to identify high CPU processes</li>
+<li>Check process priorities with <code>nice</code> and <code>renice</code></li>
+<li>Monitor CPU scheduling with <code>schedtool</code></li>
+<li>
+<p>Analyze system load with <code>uptime</code></p>
+</li>
+<li>
+<p><strong>Memory Problems</strong></p>
+</li>
+<li>Check memory usage with <code>free</code> and <code>vmstat</code></li>
+<li>Monitor swap usage</li>
+<li>Analyze memory leaks</li>
+<li>
+<p>Tune kernel memory parameters</p>
+</li>
+<li>
+<p><strong>Disk I/O Issues</strong></p>
+</li>
+<li>Monitor disk activity with <code>iostat</code></li>
+<li>Check disk health with <code>smartctl</code></li>
+<li>Analyze I/O patterns with <code>iotop</code></li>
+<li>
+<p>Optimize filesystem parameters</p>
+</li>
+<li>
+<p><strong>Network Performance</strong></p>
+</li>
+<li>Monitor bandwidth with <code>iftop</code></li>
+<li>Analyze connections with <code>netstat</code></li>
+<li>Check network errors with <code>ethtool</code></li>
+<li>Tune network parameters with <code>sysctl</code></li>
+</ol>
+<h3 id="quick-reference-commands">Quick Reference Commands</h3>
+<pre><code class="language-bash"># System Overview
+top                     # Process activity
+htop                    # Interactive process viewer
+uptime                  # Load average
+dmesg                   # Kernel messages
+
+# Memory Analysis
+free -m                 # Memory usage
+vmstat                  # Virtual memory stats
+pmap                    # Process memory map
+smem                    # Memory reporting
+
+# Disk Operations
+iostat                  # I/O statistics
+iotop                   # I/O monitoring
+fdisk -l                # Disk partitions
+df -h                   # Filesystem usage
+
+# Network Analysis
+netstat                 # Network statistics
+ss                      # Socket statistics
+iftop                   # Network bandwidth
+tcpdump                 # Packet analysis
+
+# Process Management
+ps aux                  # Process status
+pstree                  # Process tree
+nice                    # Process priority
+renice                  # Change priority
+
+# System Information
+uname -a                # System information
+lscpu                   # CPU information
+lsblk                   # Block devices
+lspci                   # PCI devices
+</code></pre>
+<h3 id="additional-resources">Additional Resources</h3>
+<ol>
+<li><strong>Documentation</strong></li>
+<li>Man pages for each tool</li>
+<li>Linux kernel documentation</li>
+<li>Distribution-specific guides</li>
+<li>
+<p>Tool-specific documentation</p>
+</li>
+<li>
+<p><strong>Performance Tuning Guides</strong></p>
+</li>
+<li>Red Hat Performance Tuning Guide</li>
+<li>Ubuntu Server Guide</li>
+<li>Linux Performance website</li>
+<li>
+<p>Kernel documentation</p>
+</li>
+<li>
+<p><strong>Monitoring Tools</strong></p>
+</li>
+<li>Nagios</li>
+<li>Zabbix</li>
+<li>Prometheus</li>
+<li>
+<p>Grafana</p>
+</li>
+<li>
+<p><strong>Training Resources</strong></p>
+</li>
+<li>Linux Foundation courses</li>
+<li>Distribution certification programs</li>
+<li>Online tutorials</li>
+<li>Community forums</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

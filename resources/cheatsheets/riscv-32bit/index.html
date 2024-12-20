@@ -1,0 +1,3984 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../assembly/asm/">
+      
+      
+        <link rel="next" href="../../computerArchitecture/compArch/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>RISC-V 32-bit - Am I Learning Enough</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#risc-v-assembler-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Am I Learning Enough" class="md-header__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Am I Learning Enough
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RISC-V 32-bit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly/asm/" class="md-tabs__link">
+          
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../roadmap/dsa/dsa/" class="md-tabs__link">
+          
+  
+    
+  
+  Roadmaps
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Am I Learning Enough" class="md-nav__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Am I Learning Enough
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly/asm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cheatsheets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cheatsheets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RISC-V 32-bit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RISC-V 32-bit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arithmetic Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-logic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Logic Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Logic Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shift-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shift Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-immediate-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Immediate Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Immediate Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-and-store-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load and Store Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load and Store Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump-and-function-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump and Function Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump and Function Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter Instructions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instruction-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Terminology
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rv32-abi-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      RV32 ABI Registers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      RISC-V Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-simple-arithmetic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Simple Arithmetic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-branching-based-on-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Branching Based on Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-function-call-and-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Function Call and Return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computerArchitecture/compArch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cybersecurity/cybsec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cybersecurity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/bpftrace-eBPF-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BPF Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-networking-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-perf-benchmark-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-performace-tuning-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tuning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-static-performace-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Static Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/sed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/unix-file-system-hierarachy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/underTheHoodOfNeuralNetwork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cacheMemory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/conceptOfVirtualMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept of Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/contiguousMemAlloc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contiguous Memory Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskFragmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Fragmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/distributedSystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributed Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/embeddedOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedded OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystemImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/freeSpaceManagement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Space Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputHardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputSoftware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputTechniques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Techniques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/kernelIOSubsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel I/O Subsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/layeredArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/logicalVsPhysicalAddresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical vs Physical Addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/memoryMappedFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Mapped Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/microKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microkernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/monolithicKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monolithic Kernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/osDesignAndImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Design and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/pageReplacementAlgo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page Replacement Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/paging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processAndThreads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process and Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processManagementStructures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Management Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processScheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/protectionInOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protection in OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/realTimeOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-time OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityMechanism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityThreatsAndAttacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Threats and Attacks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/softwareLayers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/systemCalls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/thrashing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thrashing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/vonNeumannArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Von Neumann Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/emacs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emacs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reverse-engineering/re-and-be/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../univCourses/univ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    University Courses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmaps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Roadmaps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsaUsingC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA using C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/ml/neuralNetsWithC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks with C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OS Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            OS Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/knowC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    With C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/noC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Without C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/reverse-engineering/reverse-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arithmetic Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-logic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Logic Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bitwise Logic Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shift-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shift Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-immediate-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Immediate Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Immediate Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-and-store-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load and Store Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load and Store Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump-and-function-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump and Function Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump and Function Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter Instructions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instruction-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Terminology
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rv32-abi-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      RV32 ABI Registers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      RISC-V Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-simple-arithmetic-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Simple Arithmetic Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-branching-based-on-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Branching Based on Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-function-call-and-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Function Call and Return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="risc-v-assembler-cheat-sheet">RISC-V Assembler Cheat Sheet</h1>
+<p>A thorough reference to 32-bit RISC-V instructions, registers, and fundamental concepts. This guide is intended for software developers working with the RISC-V assembly language and includes grouped instructions by purpose, common pseudoinstructions, and usage examples.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#arithmetic-instructions">Arithmetic Instructions</a></li>
+<li><a href="#bitwise-logic-instructions">Bitwise Logic Instructions</a></li>
+<li><a href="#shift-instructions">Shift Instructions</a></li>
+<li><a href="#load-immediate-instructions">Load Immediate Instructions</a></li>
+<li><a href="#load-and-store-instructions">Load and Store Instructions</a></li>
+<li><a href="#jump-and-function-instructions">Jump and Function Instructions</a></li>
+<li><a href="#branch-instructions">Branch Instructions</a></li>
+<li><a href="#set-instructions">Set Instructions</a></li>
+<li><a href="#counter-instructions">Counter Instructions</a></li>
+<li><a href="#miscellaneous-instructions">Miscellaneous Instructions</a></li>
+<li><a href="#instruction-terminology">Instruction Terminology</a></li>
+<li><a href="#rv32-abi-registers">RV32 ABI Registers</a></li>
+<li><a href="#risc-v-concepts">RISC-V Concepts</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+</ol>
+<hr />
+<h2 id="arithmetic-instructions">Arithmetic Instructions</h2>
+<p>Arithmetic operations perform basic mathematical computations.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add</code></td>
+<td>Add</td>
+<td><code>add rd, rs1, rs2</code></td>
+<td><code>rd = rs1 + rs2</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>addi</code></td>
+<td>Add Immediate</td>
+<td><code>addi rd, rs1, imm</code></td>
+<td><code>rd = rs1 + imm</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>neg</code></td>
+<td>Negate (pseudoinstruction)</td>
+<td><code>neg rd, rs2</code></td>
+<td><code>rd = -rs2</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>sub</code></td>
+<td>Subtract</td>
+<td><code>sub rd, rs1, rs2</code></td>
+<td><code>rd = rs1 - rs2</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>mul</code></td>
+<td>Multiply</td>
+<td><code>mul rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 * rs2)[31:0]</code></td>
+<td>Multiply</td>
+</tr>
+<tr>
+<td><code>mulh</code></td>
+<td>Multiply High</td>
+<td><code>mulh rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 * rs2)[63:32]</code></td>
+<td>Multiply</td>
+</tr>
+<tr>
+<td><code>mulhu</code></td>
+<td>Multiply High Unsigned</td>
+<td><code>mulhu rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 * rs2)[63:32]</code></td>
+<td>Multiply</td>
+</tr>
+<tr>
+<td><code>mulhsu</code></td>
+<td>Multiply High Signed Unsigned</td>
+<td><code>mulhsu rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 * rs2)[63:32]</code></td>
+<td>Multiply</td>
+</tr>
+<tr>
+<td><code>div</code></td>
+<td>Divide</td>
+<td><code>div rd, rs1, rs2</code></td>
+<td><code>rd = rs1 / rs2</code></td>
+<td>Divide</td>
+</tr>
+<tr>
+<td><code>rem</code></td>
+<td>Remainder</td>
+<td><code>rem rd, rs1, rs2</code></td>
+<td><code>rd = rs1 % rs2</code></td>
+<td>Divide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+- Use <code>addi</code> for subtracting with an immediate value: <code>addi rd, rs1, -imm</code>
+- Multiply and divide instructions require the <strong>M</strong> extension.</p>
+<h3 id="example">Example:</h3>
+<pre><code class="language-assembly">addi t0, t1, 10      # t0 = t1 + 10
+sub t2, t0, t1       # t2 = t0 - t1
+mul t3, t2, t1       # t3 = t2 * t1
+</code></pre>
+<hr />
+<h2 id="bitwise-logic-instructions">Bitwise Logic Instructions</h2>
+<p>Perform logical operations on binary data.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code></td>
+<td>Logical AND</td>
+<td><code>and rd, rs1, rs2</code></td>
+<td><code>rd = rs1 &amp; rs2</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>andi</code></td>
+<td>AND Immediate</td>
+<td><code>andi rd, rs1, imm</code></td>
+<td><code>rd = rs1 &amp; imm</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Logical NOT (pseudoinstruction)</td>
+<td><code>not rd, rs1</code></td>
+<td><code>rd = ~rs1</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>Logical OR</td>
+<td><code>or rd, rs1, rs2</code></td>
+<td><code>rd = rs1 | rs2</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>ori</code></td>
+<td>OR Immediate</td>
+<td><code>ori rd, rs1, imm</code></td>
+<td><code>rd = rs1 | imm</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>xor</code></td>
+<td>Logical XOR</td>
+<td><code>xor rd, rs1, rs2</code></td>
+<td><code>rd = rs1 ^ rs2</code></td>
+<td>Logical</td>
+</tr>
+<tr>
+<td><code>xori</code></td>
+<td>XOR Immediate</td>
+<td><code>xori rd, rs1, imm</code></td>
+<td><code>rd = rs1 ^ imm</code></td>
+<td>Logical</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_1">Example:</h3>
+<pre><code class="language-assembly">and t0, t1, t2       # t0 = t1 &amp; t2
+ori t3, t0, 0xFF     # t3 = t0 | 0xFF
+not t4, t3           # t4 = ~t3
+</code></pre>
+<hr />
+<h2 id="shift-instructions">Shift Instructions</h2>
+<p>Handle bitwise shifting operations.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sll</code></td>
+<td>Shift Left Logical</td>
+<td><code>sll rd, rs1, rs2</code></td>
+<td><code>rd = rs1 &lt;&lt; rs2</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>slli</code></td>
+<td>Shift Left Logical Immediate</td>
+<td><code>slli rd, rs1, imm</code></td>
+<td><code>rd = rs1 &lt;&lt; imm</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>srl</code></td>
+<td>Shift Right Logical</td>
+<td><code>srl rd, rs1, rs2</code></td>
+<td><code>rd = rs1 &gt;&gt; rs2</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>srli</code></td>
+<td>Shift Right Logical Immediate</td>
+<td><code>srli rd, rs1, imm</code></td>
+<td><code>rd = rs1 &gt;&gt; imm</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>sra</code></td>
+<td>Shift Right Arithmetic</td>
+<td><code>sra rd, rs1, rs2</code></td>
+<td><code>rd = rs1 &gt;&gt;&gt; rs2</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>srai</code></td>
+<td>Shift Right Arithmetic Immediate</td>
+<td><code>srai rd, rs1, imm</code></td>
+<td><code>rd = rs1 &gt;&gt;&gt; imm</code></td>
+<td>Shift</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_2">Example:</h3>
+<pre><code class="language-assembly">slli t0, t1, 2       # t0 = t1 &lt;&lt; 2
+srli t2, t0, 1       # t2 = t0 &gt;&gt; 1
+sra t3, t2, t1       # t3 = t2 &gt;&gt;&gt; t1
+</code></pre>
+<hr />
+<h2 id="load-immediate-instructions">Load Immediate Instructions</h2>
+<p>Load immediate values into registers.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>li</code></td>
+<td>Load Immediate (pseudoinstruction)</td>
+<td><code>li rd, imm</code></td>
+<td><code>rd = imm</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>lui</code></td>
+<td>Load Upper Immediate</td>
+<td><code>lui rd, imm</code></td>
+<td><code>rd = imm &lt;&lt; 12</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>auipc</code></td>
+<td>Add Upper Immediate to PC</td>
+<td><code>auipc rd, imm</code></td>
+<td><code>rd = pc + (imm &lt;&lt; 12)</code></td>
+<td>Branch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_3">Example:</h3>
+<pre><code class="language-assembly">li t0, 100           # t0 = 100
+lui t1, 0x1F         # t1 = 0x1F000
+auipc t2, 0x10       # t2 = pc + 0x10000
+</code></pre>
+<hr />
+<h2 id="load-and-store-instructions">Load and Store Instructions</h2>
+<p>Manage data movement between registers and memory.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lw</code></td>
+<td>Load Word</td>
+<td><code>lw rd, imm(rs1)</code></td>
+<td><code>rd = mem[rs1 + imm]</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>lh</code></td>
+<td>Load Half</td>
+<td><code>lh rd, imm(rs1)</code></td>
+<td><code>rd = mem[rs1 + imm][0:15]</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>lhu</code></td>
+<td>Load Half Unsigned</td>
+<td><code>lhu rd, imm(rs1)</code></td>
+<td><code>rd = mem[rs1 + imm][0:15]</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>lb</code></td>
+<td>Load Byte</td>
+<td><code>lb rd, imm(rs1)</code></td>
+<td><code>rd = mem[rs1 + imm][0:7]</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>lbu</code></td>
+<td>Load Byte Unsigned</td>
+<td><code>lbu rd, imm(rs1)</code></td>
+<td><code>rd = mem[rs1 + imm][0:7]</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>la</code></td>
+<td>Load Symbol Address (pseudoinstruction)</td>
+<td><code>la rd, symbol</code></td>
+<td><code>rd = &amp;symbol</code></td>
+<td>Load</td>
+</tr>
+<tr>
+<td><code>sw</code></td>
+<td>Store Word</td>
+<td><code>sw rs2, imm(rs1)</code></td>
+<td><code>mem[rs1 + imm] = rs2</code></td>
+<td>Store</td>
+</tr>
+<tr>
+<td><code>sh</code></td>
+<td>Store Half</td>
+<td><code>sh rs2, imm(rs1)</code></td>
+<td><code>mem[rs1 + imm][0:15] = rs2</code></td>
+<td>Store</td>
+</tr>
+<tr>
+<td><code>sb</code></td>
+<td>Store Byte</td>
+<td><code>sb rs2, imm(rs1)</code></td>
+<td><code>mem[rs1 + imm][0:7] = rs2</code></td>
+<td>Store</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_4">Example:</h3>
+<pre><code class="language-assembly">lw t0, 0(sp)         # t0 = mem[sp + 0]
+sw t1, 4(sp)         # mem[sp + 4] = t1
+la t2, data_label    # t2 = address of data_label
+</code></pre>
+<hr />
+<h2 id="jump-and-function-instructions">Jump and Function Instructions</h2>
+<p>Control the flow of the program through jumps and function calls.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>j</code></td>
+<td>Jump (pseudoinstruction)</td>
+<td><code>j imm</code></td>
+<td><code>pc += imm</code></td>
+<td>Jump</td>
+</tr>
+<tr>
+<td><code>jal</code></td>
+<td>Jump and Link</td>
+<td><code>jal rd, imm</code></td>
+<td><code>rd = pc + 4; pc += imm</code></td>
+<td>Jump</td>
+</tr>
+<tr>
+<td><code>jalr</code></td>
+<td>Jump and Link Register</td>
+<td><code>jalr rd, rs1, imm</code></td>
+<td><code>rd = pc + 4; pc = rs1 + imm</code></td>
+<td>Jump</td>
+</tr>
+<tr>
+<td><code>call</code></td>
+<td>Call Function (pseudoinstruction)</td>
+<td><code>call symbol</code></td>
+<td><code>ra = pc + 4; pc = &amp;symbol</code></td>
+<td>Function</td>
+</tr>
+<tr>
+<td><code>ret</code></td>
+<td>Return from Function (pseudoinstruction)</td>
+<td><code>ret</code></td>
+<td><code>pc = ra</code></td>
+<td>Function</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+- Labels can be used in place of immediate values for jump instructions.</p>
+<h3 id="example_5">Example:</h3>
+<pre><code class="language-assembly">jal ra, function_label    # Jump to function_label and store return address in ra
+call main                 # Call the main function
+ret                       # Return from the current function
+</code></pre>
+<hr />
+<h2 id="branch-instructions">Branch Instructions</h2>
+<p>Conditional branching based on comparisons.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beq</code></td>
+<td>Branch Equal</td>
+<td><code>beq rs1, rs2, imm</code></td>
+<td><code>if(rs1 == rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>beqz</code></td>
+<td>Branch Equal Zero (pseudoinstruction)</td>
+<td><code>beqz rs1, imm</code></td>
+<td><code>if(rs1 == 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bne</code></td>
+<td>Branch Not Equal</td>
+<td><code>bne rs1, rs2, imm</code></td>
+<td><code>if(rs1 ≠ rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bnez</code></td>
+<td>Branch Not Equal Zero (pseudoinstruction)</td>
+<td><code>bnez rs1, imm</code></td>
+<td><code>if(rs1 ≠ 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>blt</code></td>
+<td>Branch Less Than</td>
+<td><code>blt rs1, rs2, imm</code></td>
+<td><code>if(rs1 &lt; rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bltu</code></td>
+<td>Branch Less Than Unsigned</td>
+<td><code>bltu rs1, rs2, imm</code></td>
+<td><code>if(rs1 &lt; rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bltz</code></td>
+<td>Branch Less Than Zero (pseudoinstruction)</td>
+<td><code>bltz rs1, imm</code></td>
+<td><code>if(rs1 &lt; 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bgt</code></td>
+<td>Branch Greater Than (pseudoinstruction)</td>
+<td><code>bgt rs1, rs2, imm</code></td>
+<td><code>if(rs1 &gt; rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bgtu</code></td>
+<td>Branch Greater Than Unsigned (pseudoinstruction)</td>
+<td><code>bgtu rs1, rs2, imm</code></td>
+<td><code>if(rs1 &gt; rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bgtz</code></td>
+<td>Branch Greater Than Zero (pseudoinstruction)</td>
+<td><code>bgtz rs1, imm</code></td>
+<td><code>if(rs1 &gt; 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>ble</code></td>
+<td>Branch Less or Equal (pseudoinstruction)</td>
+<td><code>ble rs1, rs2, imm</code></td>
+<td><code>if(rs1 ≤ rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bleu</code></td>
+<td>Branch Less or Equal Unsigned (pseudoinstruction)</td>
+<td><code>bleu rs1, rs2, imm</code></td>
+<td><code>if(rs1 ≤ rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>blez</code></td>
+<td>Branch Less or Equal Zero (pseudoinstruction)</td>
+<td><code>blez rs1, imm</code></td>
+<td><code>if(rs1 ≤ 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bge</code></td>
+<td>Branch Greater or Equal</td>
+<td><code>bge rs1, rs2, imm</code></td>
+<td><code>if(rs1 ≥ rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bgeu</code></td>
+<td>Branch Greater or Equal Unsigned</td>
+<td><code>bgeu rs1, rs2, imm</code></td>
+<td><code>if(rs1 ≥ rs2) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+<tr>
+<td><code>bgez</code></td>
+<td>Branch Greater or Equal Zero (pseudoinstruction)</td>
+<td><code>bgez rs1, imm</code></td>
+<td><code>if(rs1 ≥ 0) pc += imm</code></td>
+<td>Branch</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+- Labels can be used in place of immediate values for branch instructions.</p>
+<h3 id="example_6">Example:</h3>
+<pre><code class="language-assembly">beq t0, t1, equal_label    # If t0 == t1, jump to equal_label
+bnez t2, not_zero_label    # If t2 != 0, jump to not_zero_label
+blt t3, t4, less_than_label # If t3 &lt; t4, jump to less_than_label
+</code></pre>
+<hr />
+<h2 id="set-instructions">Set Instructions</h2>
+<p>Set register values based on comparisons.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slt</code></td>
+<td>Set Less Than</td>
+<td><code>slt rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 &lt; rs2)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>slti</code></td>
+<td>Set Less Than Immediate</td>
+<td><code>slti rd, rs1, imm</code></td>
+<td><code>rd = (rs1 &lt; imm)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>sltu</code></td>
+<td>Set Less Than Unsigned</td>
+<td><code>sltu rd, rs1, rs2</code></td>
+<td><code>rd = (rs1 &lt; rs2)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>sltiu</code></td>
+<td>Set Less Than Immediate Unsigned</td>
+<td><code>sltiu rd, rs1, imm</code></td>
+<td><code>rd = (rs1 &lt; imm)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>seqz</code></td>
+<td>Set Equal Zero (pseudoinstruction)</td>
+<td><code>seqz rd, rs1</code></td>
+<td><code>rd = (rs1 == 0)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>snez</code></td>
+<td>Set Not Equal Zero (pseudoinstruction)</td>
+<td><code>snez rd, rs1</code></td>
+<td><code>rd = (rs1 ≠ 0)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>sltz</code></td>
+<td>Set Less Than Zero (pseudoinstruction)</td>
+<td><code>sltz rd, rs1</code></td>
+<td><code>rd = (rs1 &lt; 0)</code></td>
+<td>Set</td>
+</tr>
+<tr>
+<td><code>sgtz</code></td>
+<td>Set Greater Than Zero (pseudoinstruction)</td>
+<td><code>sgtz rd, rs1</code></td>
+<td><code>rd = (rs1 &gt; 0)</code></td>
+<td>Set</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example_7">Example:</h3>
+<pre><code class="language-assembly">slt t0, t1, t2        # t0 = (t1 &lt; t2)
+slti t3, t0, 5        # t3 = (t0 &lt; 5)
+seqz t4, t3           # t4 = (t3 == 0)
+</code></pre>
+<hr />
+<h2 id="counter-instructions">Counter Instructions</h2>
+<p>Access CPU cycle and instruction counters. <em>Note: These instructions require the Zicntr and Zicsr extensions and are not yet available in all implementations.</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rdcycle</code></td>
+<td>CPU Cycle Count (pseudoinstruction)</td>
+<td><code>rdcycle rd</code></td>
+<td><code>rd = csr_cycle[31:0]</code></td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>rdcycleh</code></td>
+<td>CPU Cycle Count High (pseudoinstruction)</td>
+<td><code>rdcycleh rd</code></td>
+<td><code>rd = csr_cycle[63:32]</code></td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>rdtime</code></td>
+<td>Current Time (pseudoinstruction)</td>
+<td><code>rdtime rd</code></td>
+<td><code>rd = csr_time[31:0]</code></td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>rdtimeh</code></td>
+<td>Current Time High (pseudoinstruction)</td>
+<td><code>rdtimeh rd</code></td>
+<td><code>rd = csr_time[63:32]</code></td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>rdinstret</code></td>
+<td>CPU Instructions Retired (pseudoinstruction)</td>
+<td><code>rdinstret rd</code></td>
+<td><code>rd = csr_instret[31:0]</code></td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>rdinstreth</code></td>
+<td>CPU Instructions Retired High (pseudoinstruction)</td>
+<td><code>rdinstreth rd</code></td>
+<td><code>rd = csr_instret[63:32]</code></td>
+<td>Not Available</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="miscellaneous-instructions">Miscellaneous Instructions</h2>
+<p>Additional instructions for various purposes.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Instruction</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Result</strong></th>
+<th><strong>Guide</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ebreak</code></td>
+<td>Environment Break (Debugger Call)</td>
+<td><code>ebreak</code></td>
+<td>-</td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>ecall</code></td>
+<td>Environment Call (OS Function)</td>
+<td><code>ecall</code></td>
+<td>-</td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>fence</code></td>
+<td>I/O Ordering</td>
+<td><code>fence</code></td>
+<td>-</td>
+<td>Not Available</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Copy Register (pseudoinstruction)</td>
+<td><code>mv rd, rs1</code></td>
+<td><code>rd = rs1</code></td>
+<td>Arithmetic</td>
+</tr>
+<tr>
+<td><code>nop</code></td>
+<td>No Operation (pseudoinstruction)</td>
+<td><code>nop</code></td>
+<td>-</td>
+<td>Arithmetic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+- The <code>fence</code> instruction requires the <strong>Zifencei</strong> extension.</p>
+<h3 id="example_8">Example:</h3>
+<pre><code class="language-assembly">mv t0, t1            # t0 = t1
+nop                  # No operation
+ecall                # Environment call
+</code></pre>
+<hr />
+<h2 id="instruction-terminology">Instruction Terminology</h2>
+<p>Understanding the terminology used in RISC-V assembly instructions.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>imm</code></td>
+<td>Immediate value (normally sign-extended)</td>
+</tr>
+<tr>
+<td><code>mem</code></td>
+<td>Memory</td>
+</tr>
+<tr>
+<td><code>(p)</code></td>
+<td>Pseudoinstruction</td>
+</tr>
+<tr>
+<td><code>pc</code></td>
+<td>Program counter</td>
+</tr>
+<tr>
+<td><code>pc+4</code></td>
+<td>Next instruction on RV32</td>
+</tr>
+<tr>
+<td><code>ra</code></td>
+<td>Return address register (x1)</td>
+</tr>
+<tr>
+<td><code>rd</code></td>
+<td>Destination register</td>
+</tr>
+<tr>
+<td><code>rs1</code></td>
+<td>First source register</td>
+</tr>
+<tr>
+<td><code>rs2</code></td>
+<td>Second source register</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td>Symbol (may be a label in assembly)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rv32-abi-registers">RV32 ABI Registers</h2>
+<p>Overview of the ABI (Application Binary Interface) registers for RV32.</p>
+<table>
+<thead>
+<tr>
+<th><strong>ABI Name</strong></th>
+<th><strong>Register</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Preserved</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zero</code></td>
+<td><code>x0</code></td>
+<td>Always 0 (zero)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>ra</code></td>
+<td><code>x1</code></td>
+<td>Return address</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>sp</code></td>
+<td><code>x2</code></td>
+<td>Stack pointer</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>gp</code></td>
+<td><code>x3</code></td>
+<td>Global pointer*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>tp</code></td>
+<td><code>x4</code></td>
+<td>Thread pointer*</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>t0</code></td>
+<td><code>x5</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>t1</code></td>
+<td><code>x6</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>t2</code></td>
+<td><code>x7</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>fp (s0)</code></td>
+<td><code>x8</code></td>
+<td>Frame pointer†</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s1</code></td>
+<td><code>x9</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>a0</code></td>
+<td><code>x10</code></td>
+<td>Function argument‡</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>x11</code></td>
+<td>Function argument‡</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>x12</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>x13</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a4</code></td>
+<td><code>x14</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a5</code></td>
+<td><code>x15</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a6</code></td>
+<td><code>x16</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>a7</code></td>
+<td><code>x17</code></td>
+<td>Function argument</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>s2</code></td>
+<td><code>x18</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s3</code></td>
+<td><code>x19</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s4</code></td>
+<td><code>x20</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s5</code></td>
+<td><code>x21</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s6</code></td>
+<td><code>x22</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s7</code></td>
+<td><code>x23</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s8</code></td>
+<td><code>x24</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s9</code></td>
+<td><code>x25</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s10</code></td>
+<td><code>x26</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>s11</code></td>
+<td><code>x27</code></td>
+<td>Saved register</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>t3</code></td>
+<td><code>x28</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>t4</code></td>
+<td><code>x29</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>t5</code></td>
+<td><code>x30</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>t6</code></td>
+<td><code>x31</code></td>
+<td>Temporary</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+- * Let the compiler/linker use the global <code>gp</code> and thread <code>tp</code> pointers; ignore them in your own code.
+- † The frame pointer <code>fp</code> supports local variables but can be used as a regular saved register.
+- ‡ Argument registers <code>a0</code> and <code>a1</code> also handle the function return value.</p>
+<hr />
+<h2 id="risc-v-concepts">RISC-V Concepts</h2>
+<p>Key concepts to understand when working with RISC-V assembly:</p>
+<ul>
+<li><strong>Extensions:</strong> RISC-V is modular, allowing for different extensions (e.g., M for Multiply/Divide, A for Atomic, etc.) to add functionality.</li>
+<li><strong>Base Instruction Set:</strong> This cheat sheet focuses on the base integer instruction set (RV32I).</li>
+<li><strong>Pseudoinstructions:</strong> These are simplified instructions that are translated into one or more actual RISC-V instructions by the assembler.</li>
+</ul>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<p>Below are examples demonstrating how to use various RISC-V instructions in assembly code.</p>
+<h3 id="example-1-simple-arithmetic-operations">Example 1: Simple Arithmetic Operations</h3>
+<pre><code class="language-assembly">.section .text
+.globl main
+
+main:
+    li t0, 10          # Load immediate 10 into t0
+    li t1, 20          # Load immediate 20 into t1
+    add t2, t0, t1     # t2 = t0 + t1 (30)
+    sub t3, t1, t0     # t3 = t1 - t0 (10)
+    mul t4, t2, t3     # t4 = t2 * t3 (300)
+    ecall              # Exit program
+</code></pre>
+<h3 id="example-2-branching-based-on-comparison">Example 2: Branching Based on Comparison</h3>
+<pre><code class="language-assembly">.section .text
+.globl main
+
+main:
+    li t0, 5           # t0 = 5
+    li t1, 10          # t1 = 10
+    blt t0, t1, less_than_label  # If t0 &lt; t1, jump to less_than_label
+    j end_label        # Else, jump to end_label
+
+less_than_label:
+    li a0, 1           # Set a0 to 1 (indicating true)
+    j end_label
+
+end_label:
+    li a0, 0           # Set a0 to 0 (indicating false)
+    ecall              # Exit program
+</code></pre>
+<h3 id="example-3-function-call-and-return">Example 3: Function Call and Return</h3>
+<pre><code class="language-assembly">.section .text
+.globl main
+
+main:
+    jal ra, function_label  # Jump to function_label and save return address
+    li a0, 0               # Set return value to 0
+    ecall                  # Exit program
+
+function_label:
+    addi sp, sp, -16       # Allocate stack space
+    sw ra, 12(sp)          # Save return address
+    li t0, 42              # Perform some operations
+    lw ra, 12(sp)          # Restore return address
+    addi sp, sp, 16        # Deallocate stack space
+    jalr ra, 0(ra)         # Return to caller
+</code></pre>
+<hr />
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="#">Project F RISC-V Assembler Guide</a></li>
+<li><a href="https://riscv.org/technical/specifications/">RISC-V Specification</a></li>
+</ul>
+<hr />
+<p><em>This cheat sheet covers the base integer instruction set (RV32I) and some standard extensions. Make sure to consult the official RISC-V documentation for comprehensive information and updates.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

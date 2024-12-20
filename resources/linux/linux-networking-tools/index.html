@@ -1,0 +1,3328 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../bpftrace-eBPF-tools/">
+      
+      
+        <link rel="next" href="../linux-perf-benchmark-tools/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Networking Tools - Am I Learning Enough</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#every-linux-networking-tool-you-need-to-know" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Am I Learning Enough" class="md-header__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Am I Learning Enough
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Networking Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly/asm/" class="md-tabs__link">
+          
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../roadmap/dsa/dsa/" class="md-tabs__link">
+          
+  
+    
+  
+  Roadmaps
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Am I Learning Enough" class="md-nav__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Am I Learning Enough
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly/asm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cheatsheets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cheatsheets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/riscv-32bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RISC-V 32-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computerArchitecture/compArch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cybersecurity/cybsec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cybersecurity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bpftrace-eBPF-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BPF Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Networking Tools
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Networking Tools
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      curl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httpie" class="md-nav__link">
+    <span class="md-ellipsis">
+      httpie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wget" class="md-nav__link">
+    <span class="md-ellipsis">
+      wget
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tc" class="md-nav__link">
+    <span class="md-ellipsis">
+      tc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dignslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      dig/nslookup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whois" class="md-nav__link">
+    <span class="md-ellipsis">
+      whois
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      scp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsync
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    <span class="md-ellipsis">
+      tcpdump
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireshark" class="md-nav__link">
+    <span class="md-ellipsis">
+      wireshark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      arp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      ip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      route
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      nmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      zenmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p0f" class="md-nav__link">
+    <span class="md-ellipsis">
+      p0f
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openvpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      openvpn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireguard" class="md-nav__link">
+    <span class="md-ellipsis">
+      wireguard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat-nc" class="md-nav__link">
+    <span class="md-ellipsis">
+      netcat (nc)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    <span class="md-ellipsis">
+      socat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tftptftp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      tftp/tftp3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nftables" class="md-nav__link">
+    <span class="md-ellipsis">
+      nftables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hping3" class="md-nav__link">
+    <span class="md-ellipsis">
+      hping3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroutemtr" class="md-nav__link">
+    <span class="md-ellipsis">
+      traceroute/mtr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcptrace" class="md-nav__link">
+    <span class="md-ellipsis">
+      tcptrace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethtool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iwconfigiw" class="md-nav__link">
+    <span class="md-ellipsis">
+      iwconfig/iw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      sysctl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      openssl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      stunnel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptrafnethogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptraf/nethogs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abjmeterwrk" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab/JMeter/wrk
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-m-simplehttpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      python -m SimpleHTTPServer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipealc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipealc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nsenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      nsenter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-perf-benchmark-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-performace-tuning-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tuning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-static-performace-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Static Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unix-file-system-hierarachy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/underTheHoodOfNeuralNetwork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cacheMemory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/conceptOfVirtualMem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept of Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/contiguousMemAlloc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contiguous Memory Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskFragmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Fragmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskStructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/distributedSystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributed Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/embeddedOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedded OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystemImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/freeSpaceManagement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Space Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputHardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputSoftware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputTechniques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input/Output Techniques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/kernelIOSubsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel I/O Subsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/layeredArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/logicalVsPhysicalAddresses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical vs Physical Addresses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/memoryMappedFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Mapped Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/microKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microkernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/monolithicKernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monolithic Kernel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/osDesignAndImplementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Design and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/pageReplacementAlgo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page Replacement Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/paging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processAndThreads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process and Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processManagementStructures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Management Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processScheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/protectionInOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protection in OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/realTimeOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-time OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityMechanism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Mechanism
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityThreatsAndAttacks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Threats and Attacks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/softwareLayers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/systemCalls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/thrashing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thrashing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/vonNeumannArchitecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Von Neumann Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming/emacs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emacs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reverse-engineering/re-and-be/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../univCourses/univ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    University Courses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Roadmaps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Roadmaps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsaUsingC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA using C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/ml/neuralNetsWithC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Networks with C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OS Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            OS Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/knowC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    With C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/noC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Without C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/reverse-engineering/reverse-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      curl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httpie" class="md-nav__link">
+    <span class="md-ellipsis">
+      httpie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wget" class="md-nav__link">
+    <span class="md-ellipsis">
+      wget
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tc" class="md-nav__link">
+    <span class="md-ellipsis">
+      tc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dignslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      dig/nslookup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whois" class="md-nav__link">
+    <span class="md-ellipsis">
+      whois
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scp" class="md-nav__link">
+    <span class="md-ellipsis">
+      scp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsync
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    <span class="md-ellipsis">
+      tcpdump
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireshark" class="md-nav__link">
+    <span class="md-ellipsis">
+      wireshark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      arp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      ip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route" class="md-nav__link">
+    <span class="md-ellipsis">
+      route
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      nmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zenmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      zenmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p0f" class="md-nav__link">
+    <span class="md-ellipsis">
+      p0f
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openvpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      openvpn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireguard" class="md-nav__link">
+    <span class="md-ellipsis">
+      wireguard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat-nc" class="md-nav__link">
+    <span class="md-ellipsis">
+      netcat (nc)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    <span class="md-ellipsis">
+      socat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tftptftp3" class="md-nav__link">
+    <span class="md-ellipsis">
+      tftp/tftp3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nftables" class="md-nav__link">
+    <span class="md-ellipsis">
+      nftables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hping3" class="md-nav__link">
+    <span class="md-ellipsis">
+      hping3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroutemtr" class="md-nav__link">
+    <span class="md-ellipsis">
+      traceroute/mtr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcptrace" class="md-nav__link">
+    <span class="md-ellipsis">
+      tcptrace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethtool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iwconfigiw" class="md-nav__link">
+    <span class="md-ellipsis">
+      iwconfig/iw
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      sysctl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      openssl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      stunnel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iptrafnethogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      iptraf/nethogs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abjmeterwrk" class="md-nav__link">
+    <span class="md-ellipsis">
+      ab/JMeter/wrk
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-m-simplehttpserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      python -m SimpleHTTPServer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipealc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ipealc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nsenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      nsenter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="every-linux-networking-tool-you-need-to-know">Every Linux Networking Tool You Need to Know</h1>
+<p>This comprehensive cheatsheet covers a wide range of Linux networking tools, providing a one-stop reference for Linux users.</p>
+<h2 id="ping"><code>ping</code></h2>
+<p>The <code>ping</code> command is used to check if a remote computer is connected and making HTTP requests. It sends ICMP echo request packets to the target host and waits for a response.</p>
+<p><strong>Usage Examples:</strong>
+- <code>ping &lt;hostname&gt;</code>: Sends ICMP echo requests to the specified hostname.
+- <code>ping &lt;IP_address&gt;</code>: Sends ICMP echo requests to the specified IP address.
+- <code>ping -c &lt;count&gt; &lt;target&gt;</code>: Sends a specified number of ICMP echo requests and then exits.
+- <code>ping -i &lt;interval&gt; &lt;target&gt;</code>: Sets the interval between sent packets in seconds.
+- <code>ping -s &lt;size&gt; &lt;target&gt;</code>: Specifies the size of the ICMP echo request packet.</p>
+<h2 id="curl"><code>curl</code></h2>
+<p><code>curl</code> is a versatile tool for making HTTP requests, providing more control and flexibility than <code>ping</code>. It supports a wide range of protocols, including HTTP, FTP, SFTP, and more.</p>
+<p><strong>Usage Examples:</strong>
+- <code>curl &lt;URL&gt;</code>: Sends a GET request to the specified URL and outputs the response.
+- <code>curl -X POST -d "data=value" &lt;URL&gt;</code>: Sends a POST request with form data.
+- <code>curl -H "Content-Type: application/json" -d '{"key":"value"}' &lt;URL&gt;</code>: Sends a POST request with JSON data.
+- <code>curl -o &lt;filename&gt; &lt;URL&gt;</code>: Saves the response to a file instead of printing it to the console.
+- <code>curl -L &lt;URL&gt;</code>: Follows redirects automatically.</p>
+<h2 id="httpie"><code>httpie</code></h2>
+<p><code>httpie</code> is a user-friendly command-line tool for making HTTP requests. It has a more intuitive syntax compared to <code>curl</code>, making it easier to use for some users.</p>
+<p><strong>Usage Examples:</strong>
+- <code>http &lt;URL&gt;</code>: Sends a GET request to the specified URL.
+- <code>http POST &lt;URL&gt; key=value</code>: Sends a POST request with form data.
+- <code>http PUT &lt;URL&gt; key:value</code>: Sends a PUT request with JSON data.
+- <code>http -h</code>: Displays the available options and headers.
+- <code>http --json &lt;URL&gt; key=value</code>: Sends a POST request with JSON data.</p>
+<h2 id="wget"><code>wget</code></h2>
+<p><code>wget</code> is a command-line tool used for downloading files from the web. It supports recursive downloads, mirroring, and background downloads.</p>
+<p><strong>Usage Examples:</strong>
+- <code>wget &lt;URL&gt;</code>: Downloads the file at the specified URL.
+- <code>wget -c &lt;URL&gt;</code>: Resumes a partially downloaded file.
+- <code>wget -r &lt;URL&gt;</code>: Recursively downloads all linked files from the specified URL.
+- <code>wget -b &lt;URL&gt;</code>: Runs the download in the background.
+- <code>wget -O &lt;filename&gt; &lt;URL&gt;</code>: Saves the downloaded file with a specific filename.</p>
+<h2 id="tc"><code>tc</code></h2>
+<p><code>tc</code> (Traffic Control) is a Linux command-line tool used for fine-grained control over network traffic on a Linux router. It allows you to control your brother's internet bandwidth and other network-related settings.</p>
+<p><strong>Usage Examples:</strong>
+- <code>tc qdisc add dev &lt;interface&gt; root tbf rate &lt;rate&gt; burst &lt;burst&gt; lat &lt;latency&gt;</code>: Adds a Token Bucket Filter (TBF) to the specified network interface with the given rate, burst, and latency parameters.
+- <code>tc qdisc del dev &lt;interface&gt; root</code>: Removes the traffic control settings for the specified network interface.
+- <code>tc class add dev &lt;interface&gt; parent &lt;parent_class&gt; classid &lt;class_id&gt; tbf rate &lt;rate&gt; burst &lt;burst&gt; lat &lt;latency&gt;</code>: Adds a TBF class to the specified network interface.
+- <code>tc filter add dev &lt;interface&gt; protocol ip parent &lt;parent_class&gt; u32 match ip dst &lt;IP_address&gt;/&lt;mask&gt; flowid &lt;class_id&gt;</code>: Adds a filter to the specified network interface to map traffic to a specific class.</p>
+<h2 id="dignslookup"><code>dig/nslookup</code></h2>
+<p><code>dig</code> (Domain Information Groper) and <code>nslookup</code> are tools used to look up the IP address for a given domain name.</p>
+<p><strong>Usage Examples:</strong>
+- <code>dig &lt;domain&gt;</code>: Performs a DNS lookup for the specified domain and displays the results.
+- <code>dig @&lt;nameserver&gt; &lt;domain&gt;</code>: Performs a DNS lookup using the specified nameserver.
+- <code>dig -x &lt;IP_address&gt;</code>: Performs a reverse DNS lookup to find the domain name associated with the given IP address.
+- <code>nslookup &lt;domain&gt;</code>: Performs a DNS lookup for the specified domain and displays the results.
+- <code>nslookup -type=&lt;record_type&gt; &lt;domain&gt;</code>: Performs a DNS lookup for a specific record type (e.g., A, MX, NS).</p>
+<h2 id="whois"><code>whois</code></h2>
+<p>The <code>whois</code> command is used to check if a domain is registered and to retrieve information about the domain's registration.</p>
+<p><strong>Usage Examples:</strong>
+- <code>whois &lt;domain&gt;</code>: Retrieves the registration information for the specified domain.
+- <code>whois -h &lt;whois_server&gt; &lt;domain&gt;</code>: Queries a specific WHOIS server for the domain information.
+- <code>whois -a &lt;domain&gt;</code>: Displays the full WHOIS record for the domain, including contact information.
+- <code>whois -r &lt;domain&gt;</code>: Checks the availability of the specified domain.</p>
+<h2 id="ssh"><code>ssh</code></h2>
+<p><code>ssh</code> (Secure Shell) is a command-line tool used to establish a secure connection to a remote server or computer.</p>
+<p><strong>Usage Examples:</strong>
+- <code>ssh &lt;username&gt;@&lt;remote_host&gt;</code>: Connects to the specified remote host with the given username.
+- <code>ssh -p &lt;port&gt; &lt;username&gt;@&lt;remote_host&gt;</code>: Connects to the remote host using the specified port.
+- <code>ssh -i &lt;private_key_file&gt; &lt;username&gt;@&lt;remote_host&gt;</code>: Connects to the remote host using the specified private key file for authentication.
+- <code>ssh-keygen -t rsa -b 4096 -C "&lt;comment&gt;"</code>: Generates a new RSA SSH key pair with the specified comment.
+- <code>ssh-copy-id &lt;username&gt;@&lt;remote_host&gt;</code>: Copies the local user's public key to the remote host's authorized_keys file.</p>
+<h2 id="scp"><code>scp</code></h2>
+<p><code>scp</code> (Secure Copy) is a command-line tool used to securely copy files between a local and a remote system over an SSH connection.</p>
+<p><strong>Usage Examples:</strong>
+- <code>scp &lt;local_file&gt; &lt;username&gt;@&lt;remote_host&gt;:&lt;remote_path&gt;</code>: Copies a local file to a remote system.
+- <code>scp &lt;username&gt;@&lt;remote_host&gt;:&lt;remote_file&gt; &lt;local_path&gt;</code>: Copies a file from a remote system to the local machine.
+- <code>scp -r &lt;local_directory&gt; &lt;username&gt;@&lt;remote_host&gt;:&lt;remote_path&gt;</code>: Recursively copies a local directory to a remote system.
+- <code>scp -P &lt;port&gt; &lt;source&gt; &lt;destination&gt;</code>: Specifies the port to use for the SSH connection.
+- <code>scp -i &lt;private_key_file&gt; &lt;source&gt; &lt;destination&gt;</code>: Uses the specified private key file for authentication.</p>
+<h2 id="rsync"><code>rsync</code></h2>
+<p><code>rsync</code> is a command-line tool used to efficiently synchronize files and directories between a local and a remote system over an SSH connection. It only transfers the changed parts of files, which can save a significant amount of time and bandwidth.</p>
+<p><strong>Usage Examples:</strong>
+- <code>rsync -avz &lt;source_directory&gt; &lt;username&gt;@&lt;remote_host&gt;:&lt;destination_directory&gt;</code>: Synchronizes a local directory to a remote system, preserving permissions and timestamps, and using compression.
+- <code>rsync -avz &lt;username&gt;@&lt;remote_host&gt;:&lt;source_directory&gt; &lt;local_directory&gt;</code>: Synchronizes a remote directory to the local system.
+- <code>rsync -avz --delete &lt;source_directory&gt; &lt;username&gt;@&lt;remote_host&gt;:&lt;destination_directory&gt;</code>: Synchronizes a local directory to a remote system, deleting files on the remote that are not present in the local directory.
+- <code>rsync -avz --exclude &lt;pattern&gt; &lt;source_directory&gt; &lt;username&gt;@&lt;remote_host&gt;:&lt;destination_directory&gt;</code>: Synchronizes a local directory to a remote system, excluding files or directories that match the specified pattern.
+- <code>rsync -avz --partial --progress &lt;source&gt; &lt;destination&gt;</code>: Resumes a partially transferred file and shows the progress during the transfer.</p>
+<h2 id="grep"><code>grep</code></h2>
+<p><code>grep</code> is a command-line tool used to search for and match patterns in text data, including network output.</p>
+<p><strong>Usage Examples:</strong>
+- <code>grep &lt;pattern&gt; &lt;file&gt;</code>: Searches for the specified pattern in the given file and displays the matching lines.
+- <code>grep -i &lt;pattern&gt; &lt;file&gt;</code>: Performs a case-insensitive search for the pattern.
+- <code>grep -r &lt;pattern&gt; &lt;directory&gt;</code>: Recursively searches for the pattern in all files within the specified directory.
+- <code>grep -v &lt;pattern&gt; &lt;file&gt;</code>: Displays the lines that do not match the specified pattern.
+- <code>grep -n &lt;pattern&gt; &lt;file&gt;</code>: Displays the line numbers of the matching lines.</p>
+<h2 id="tcpdump"><code>tcpdump</code></h2>
+<p><code>tcpdump</code> is a powerful command-line tool used for capturing and analyzing network packets on a specific network interface.</p>
+<p><strong>Usage Examples:</strong>
+- <code>tcpdump -i &lt;interface&gt;</code>: Captures packets on the specified network interface.
+- <code>tcpdump -n -i &lt;interface&gt; port &lt;port&gt;</code>: Captures packets on the specified port, without resolving hostnames.
+- <code>tcpdump -r &lt;pcap_file&gt;</code>: Analyzes a previously captured packet capture (PCAP) file.
+- <code>tcpdump -w &lt;pcap_file&gt; -i &lt;interface&gt;</code>: Captures packets and saves them to a PCAP file.
+- <code>tcpdump -D</code>: Lists the available network interfaces that can be used for capturing packets.</p>
+<h2 id="wireshark"><code>wireshark</code></h2>
+<p><code>wireshark</code> is a graphical network protocol analyzer that provides a powerful GUI for capturing, analyzing, and visualizing network packets.</p>
+<p><strong>Usage Examples:</strong>
+- <code>wireshark</code>: Starts the Wireshark application, allowing you to select a network interface and begin capturing packets.
+- <code>wireshark -i &lt;interface&gt;</code>: Starts Wireshark and immediately begins capturing packets on the specified network interface.
+- <code>wireshark -r &lt;pcap_file&gt;</code>: Opens a previously captured PCAP file in Wireshark for analysis.
+- <code>wireshark -k</code>: Starts Wireshark and immediately begins capturing packets (the <code>-k</code> option starts the capture automatically).
+- <code>wireshark -f "&lt;capture_filter&gt;"</code>: Starts Wireshark and applies the specified capture filter to the packet capture.</p>
+<h2 id="arp"><code>arp</code></h2>
+<p><code>arp</code> (Address Resolution Protocol) is a command-line tool used to display and manage the system's ARP table, which maps IP addresses to MAC addresses.</p>
+<p><strong>Usage Examples:</strong>
+- <code>arp -a</code>: Displays the current ARP table, showing the IP-to-MAC address mappings.
+- <code>arp -d &lt;IP_address&gt;</code>: Deletes the specified IP address from the ARP table.
+- <code>arp -s &lt;IP_address&gt; &lt;MAC_address&gt;</code>: Statically adds an IP-to-MAC address mapping to the ARP table.
+- <code>arp -v</code>: Displays the ARP table with verbose output, including the network interface and timestamp information.
+- <code>arp -n</code>: Displays the ARP table without resolving hostnames.</p>
+<h2 id="ip"><code>ip</code></h2>
+<p>The <code>ip</code> command is a more comprehensive tool for managing network interfaces and routing compared to the older <code>ifconfig</code> command.</p>
+<p><strong>Usage Examples:</strong>
+- <code>ip addr show</code>: Displays information about all network interfaces, including their IP addresses and MAC addresses.
+- <code>ip link set &lt;interface&gt; up/down</code>: Brings the specified network interface up or down.
+- <code>ip route show</code>: Displays the current routing table.
+- <code>ip route add default via &lt;gateway&gt;</code>: Adds a default gateway to the routing table.
+- <code>ip neigh show</code>: Displays the neighbor (ARP) table, which maps IP addresses to MAC addresses.</p>
+<h2 id="route"><code>route</code></h2>
+<p>The <code>route</code> command is used to view and manipulate the kernel's IP routing table.</p>
+<p><strong>Usage Examples:</strong>
+- <code>route -n</code>: Displays the routing table without resolving hostnames.
+- <code>route add -net &lt;network&gt;/&lt;mask&gt; gw &lt;gateway&gt;</code>: Adds a new route to the routing table.
+- <code>route del -net &lt;network&gt;/&lt;mask&gt;</code>: Deletes a route from the routing table.
+- <code>route -C</code>: Displays the kernel's routing cache, which is used for faster lookups.
+- <code>route -v</code>: Displays the routing table with verbose output.</p>
+<h2 id="nmap"><code>nmap</code></h2>
+<p><code>nmap</code> (Network Mapper) is a powerful tool for network discovery and security auditing. It can be used to scan networks and identify active hosts and open ports.</p>
+<p><strong>Usage Examples:</strong>
+- <code>nmap &lt;target_host&gt;</code>: Performs a basic TCP connect scan on the specified target host.
+- <code>nmap -sV &lt;target_host&gt;</code>: Performs a version scan to determine the running services and their versions on the target host.
+- <code>nmap -sU -p &lt;port&gt; &lt;target_host&gt;</code>: Performs a UDP scan on the specified port of the target host.
+- <code>nmap -p- &lt;target_host&gt;</code>: Scans all 65,535 TCP ports on the target host.
+- <code>nmap -sS -p22,80,443 &lt;target_host&gt;</code>: Performs a SYN scan on the specified ports of the target host.</p>
+<h2 id="zenmap"><code>zenmap</code></h2>
+<p><code>zenmap</code> is the graphical user interface (GUI) for the <code>nmap</code> tool, providing a more user-friendly experience for network scanning and exploration.</p>
+<p><strong>Usage Examples:</strong>
+- <code>zenmap</code>: Starts the Zenmap GUI application.
+- <code>zenmap &lt;target_host&gt;</code>: Starts Zenmap and immediately scans the specified target host.
+- <code>zenmap -p22,80,443 &lt;target_host&gt;</code>: Starts Zenmap and scans the specified ports on the target host.
+- <code>zenmap -sV &lt;target_host&gt;</code>: Starts Zenmap and performs a version scan on the target host.
+- <code>zenmap -oX &lt;output_file&gt; &lt;target_host&gt;</code>: Starts Zenmap, scans the target host, and saves the results to an XML file.</p>
+<h2 id="p0f"><code>p0f</code></h2>
+<p><code>p0f</code> is a passive TCP/IP fingerprinting tool that can be used to identify the operating system of network hosts by analyzing their TCP/IP stack behavior.</p>
+<p><strong>Usage Examples:</strong>
+- <code>p0f -i &lt;interface&gt;</code>: Runs <code>p0f</code> in passive mode, listening on the specified network interface for traffic.
+- <code>p0f -r &lt;pcap_file&gt;</code>: Analyzes a previously captured packet capture (PCAP) file.
+- <code>p0f -p &lt;pid&gt;</code>: Attaches <code>p0f</code> to the specified process and analyzes its network traffic.
+- <code>p0f -s &lt;socket&gt;</code>: Connects to the specified Unix domain socket and analyzes the traffic.
+- <code>p0f -U</code>: Runs <code>p0f</code> in interactive mode, displaying the identified operating systems in real-time.</p>
+<h2 id="openvpn"><code>openvpn</code></h2>
+<p><code>openvpn</code> is a command-line tool used to establish a secure Virtual Private Network (VPN) connection.</p>
+<p><strong>Usage Examples:</strong>
+- <code>openvpn --config &lt;config_file&gt;</code>: Starts OpenVPN using the specified configuration file.
+- <code>openvpn --client --remote &lt;server_address&gt; --auth-user-pass &lt;credentials_file&gt;</code>: Starts OpenVPN in client mode, connecting to the specified server with user credentials.
+- <code>openvpn --server --dev tun --ifconfig &lt;local_ip&gt; &lt;remote_ip&gt;</code>: Starts OpenVPN in server mode, creating a TUN interface with the specified IP addresses.
+- <code>openvpn --status &lt;status_file&gt;</code>: Outputs the current status of the OpenVPN connection to the specified file.
+- <code>openvpn --log &lt;log_file&gt;</code>: Writes the OpenVPN logs to the specified file.</p>
+<h2 id="wireguard"><code>wireguard</code></h2>
+<p><code>wireguard</code> is a command-line tool used to manage the WireGuard VPN protocol, which is a newer, faster, and more secure alternative to OpenVPN.</p>
+<p><strong>Usage Examples:</strong>
+- <code>wg-quick up &lt;interface&gt;</code>: Brings up a WireGuard interface and establishes the VPN connection.
+- <code>wg-quick down &lt;interface&gt;</code>: Tears down the WireGuard VPN connection and brings the interface down.
+- <code>wg show &lt;interface&gt;</code>: Displays the current status and configuration of the WireGuard interface.
+- <code>wg set &lt;interface&gt; peer &lt;public_key&gt; endpoint &lt;server_address&gt;:&lt;port&gt;</code>: Adds a new peer (server) to the WireGuard interface configuration.
+- <code>wg-quick save &lt;interface&gt;</code>: Saves the current WireGuard interface configuration to a file.</p>
+<h2 id="netcat-nc">netcat (nc)</h2>
+<p><code>netcat</code> (or <code>nc</code>) is a versatile network utility that can be used for a variety of tasks, including:</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>nc -l -p &lt;port&gt;</code>: Listens on the specified port for incoming connections.</li>
+<li><code>nc &lt;host&gt; &lt;port&gt;</code>: Connects to the specified host and port.</li>
+<li><code>nc -u -l -p &lt;port&gt;</code>: Listens on the specified port for incoming UDP connections.</li>
+<li><code>nc -u &lt;host&gt; &lt;port&gt;</code>: Connects to the specified host and port using UDP.</li>
+<li><code>nc -e &lt;program&gt; &lt;host&gt; &lt;port&gt;</code>: Executes the specified program upon connection.</li>
+<li><code>nc -c &lt;shell&gt; &lt;host&gt; &lt;port&gt;</code>: Executes the specified shell upon connection.</li>
+<li><code>nc -z &lt;host&gt; &lt;start_port&gt;-&lt;end_port&gt;</code>: Performs a TCP port scan on the specified port range.</li>
+<li><code>nc -vv &lt;host&gt; &lt;port&gt;</code>: Connects to the specified host and port in verbose mode.</li>
+<li><code>nc -w &lt;timeout&gt; &lt;host&gt; &lt;port&gt;</code>: Sets a timeout for the connection attempt.</li>
+<li><code>nc -4</code>: Forces netcat to use IPv4.</li>
+<li><code>nc -6</code>: Forces netcat to use IPv6.</li>
+</ul>
+<h2 id="socat">socat</h2>
+<p><code>socat</code> is a command-line tool that can be used to proxy a TCP socket to a UNIX domain socket, allowing for more complex network setups.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>socat TCP4-LISTEN:&lt;port&gt;,reuseaddr,fork UNIX-CONNECT:/path/to/socket</code>: Listens on the specified port and forwards the connection to a UNIX domain socket.</li>
+<li><code>socat UNIX-LISTEN:/path/to/socket,fork TCP4:&lt;remote_host&gt;:&lt;remote_port&gt;</code>: Listens on a UNIX domain socket and forwards the connection to a remote TCP host and port.</li>
+<li><code>socat - TCP4:&lt;remote_host&gt;:&lt;remote_port&gt;</code>: Creates a simple TCP client, connecting to the specified remote host and port.</li>
+<li><code>socat - SYSTEM:'&lt;command&gt;'</code>: Executes a system command and uses the standard input/output as a socket.</li>
+<li><code>socat -d -d FILE:/path/to/file TCP4-LISTEN:&lt;port&gt;</code>: Listens on a port and logs all traffic to a file.</li>
+</ul>
+<h2 id="tftptftp3">tftp/tftp3</h2>
+<p><code>tftp</code> (Trivial File Transfer Protocol) is a simple file transfer protocol that can be used to transfer files, often for booting diskless systems or embedded devices.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>tftp &lt;host&gt;</code>: Enters the interactive TFTP prompt, allowing you to transfer files.</li>
+<li><code>tftp &lt;host&gt; get &lt;remote_file&gt; &lt;local_file&gt;</code>: Downloads a file from the remote host to the local file.</li>
+<li><code>tftp &lt;host&gt; put &lt;local_file&gt; &lt;remote_file&gt;</code>: Uploads a file from the local system to the remote host.</li>
+<li><code>tftp -l &lt;local_file&gt; -r &lt;remote_file&gt; &lt;host&gt;</code>: Downloads a file from the remote host to the specified local file.</li>
+<li><code>tftp -c get &lt;remote_file&gt; &lt;local_file&gt; &lt;host&gt;</code>: Performs a one-time file download without entering the interactive prompt.</li>
+</ul>
+<h2 id="iptables">iptables</h2>
+<p><code>iptables</code> is the command-line tool used to configure the Linux kernel's Netfilter firewall and Network Address Translation (NAT) rules.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>iptables -L</code>: Lists the current firewall rules.</li>
+<li><code>iptables -A &lt;chain&gt; -j &lt;target&gt;</code>: Appends a new rule to the specified chain.</li>
+<li><code>iptables -I &lt;chain&gt; &lt;rule_number&gt; -j &lt;target&gt;</code>: Inserts a new rule at the specified position in the chain.</li>
+<li><code>iptables -D &lt;chain&gt; &lt;rule_number&gt;</code>: Deletes the specified rule from the chain.</li>
+<li><code>iptables -t &lt;table&gt; &lt;commands&gt;</code>: Applies the specified commands to the given table (e.g., nat, mangle, raw).</li>
+</ul>
+<h2 id="nftables">nftables</h2>
+<p><code>nftables</code> is a newer and more flexible firewall and packet filtering framework that replaces the older <code>iptables</code> tool.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>nft add table ip filter</code>: Creates a new IP filter table.</li>
+<li><code>nft add chain ip filter forward { type filter hook forward priority 0; }</code>: Creates a new forward chain in the IP filter table.</li>
+<li><code>nft add rule ip filter forward ip protocol tcp drop</code>: Adds a rule to the forward chain to drop all TCP traffic.</li>
+<li><code>nft list ruleset</code>: Displays the current nftables ruleset.</li>
+<li><code>nft flush chain ip filter forward</code>: Flushes all rules from the specified chain.</li>
+</ul>
+<h2 id="hping3">hping3</h2>
+<p><code>hping3</code> is a command-line tool used to construct custom TCP/IP packets, making it useful for network testing and security assessments.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>hping3 --syn --spoof &lt;src_ip&gt; &lt;dst_ip&gt;</code>: Sends a SYN packet with a spoofed source IP address to the specified destination.</li>
+<li><code>hping3 --udp --rand-source &lt;dst_ip&gt; --port &lt;dst_port&gt;</code>: Sends random source UDP packets to the specified destination and port.</li>
+<li><code>hping3 --icmp --flood &lt;dst_ip&gt;</code>: Sends a flood of ICMP echo request packets to the specified destination.</li>
+<li><code>hping3 --scan &lt;start_port&gt;-&lt;end_port&gt; &lt;dst_ip&gt;</code>: Performs a port scan on the specified IP address and port range.</li>
+<li><code>hping3 --listen</code>: Listens for incoming packets and displays their contents.</li>
+</ul>
+<h2 id="traceroutemtr">traceroute/mtr</h2>
+<p><code>traceroute</code> and <code>mtr</code> (My TraceRoute) are tools used to trace the network path to a remote host, displaying the latency and hop information along the way.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>traceroute &lt;host&gt;</code>: Traces the network path to the specified host, displaying each hop and the round-trip time.</li>
+<li><code>traceroute -n &lt;host&gt;</code>: Disables DNS lookup, showing the IP addresses instead of hostnames.</li>
+<li><code>traceroute -p &lt;port&gt; &lt;host&gt;</code>: Specifies the destination port to use for the trace.</li>
+<li><code>mtr &lt;host&gt;</code>: Starts the interactive mtr tool, which provides a continuously updated traceroute-like display.</li>
+<li><code>mtr --report &lt;host&gt;</code>: Runs mtr in report mode, generating a single report and then exiting.</li>
+</ul>
+<h2 id="tcptrace">tcptrace</h2>
+<p><code>tcptrace</code> is a command-line tool used to analyze TCP dump files, providing insights into TCP connections and performance.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>tcptrace &lt;pcap_file&gt;</code>: Analyzes the specified packet capture (PCAP) file and displays detailed information about the TCP connections.</li>
+<li><code>tcptrace --all-connections &lt;pcap_file&gt;</code>: Displays information about all TCP connections in the PCAP file.</li>
+<li><code>tcptrace --csv &lt;pcap_file&gt;</code>: Exports the TCP connection data to a CSV file.</li>
+<li><code>tcptrace --plot-tcptrace &lt;pcap_file&gt;</code>: Generates a TCP connection flow graph from the PCAP file.</li>
+<li><code>tcptrace --hints &lt;pcap_file&gt;</code>: Provides hints and suggestions based on the analysis of the TCP connections.</li>
+</ul>
+<h2 id="ethtool">ethtool</h2>
+<p><code>ethtool</code> is a command-line tool used to manage and configure Ethernet-based network device settings, such as link speed, duplex mode, and more.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>ethtool &lt;interface&gt;</code>: Displays the current configuration of the specified network interface.</li>
+<li><code>ethtool -s &lt;interface&gt; speed &lt;speed&gt; duplex &lt;mode&gt;</code>: Sets the speed and duplex mode of the network interface.</li>
+<li><code>ethtool -g &lt;interface&gt;</code>: Displays the ring buffer parameters for the network interface.</li>
+<li><code>ethtool -k &lt;interface&gt;</code>: Displays the offload feature settings for the network interface.</li>
+<li><code>ethtool -i &lt;interface&gt;</code>: Displays the driver information for the network interface.</li>
+</ul>
+<h2 id="iwconfigiw">iwconfig/iw</h2>
+<p><code>iwconfig</code> and <code>iw</code> are tools used to configure wireless network settings, such as SSID, encryption, and other parameters.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>iwconfig &lt;interface&gt; mode managed essid &lt;SSID&gt;</code>: Sets the wireless interface to managed mode and configures the SSID.</li>
+<li><code>iwconfig &lt;interface&gt; freq &lt;frequency&gt;</code>: Sets the frequency or channel of the wireless interface.</li>
+<li><code>iwconfig &lt;interface&gt; key &lt;key&gt;</code>: Sets the encryption key for the wireless interface.</li>
+<li><code>iw dev &lt;interface&gt; set type managed</code>: Sets the wireless interface to managed mode.</li>
+<li><code>iw dev &lt;interface&gt; scan</code>: Scans for available wireless networks.</li>
+</ul>
+<h2 id="sysctl">sysctl</h2>
+<p><code>sysctl</code> is a command-line tool used to configure Linux kernel parameters at runtime, allowing you to tune network-related settings.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>sysctl -a</code>: Lists all available kernel parameters.</li>
+<li><code>sysctl net.ipv4.ip_forward</code>: Displays the current value of the <code>net.ipv4.ip_forward</code> kernel parameter.</li>
+<li><code>sysctl -w net.ipv4.ip_forward=1</code>: Sets the <code>net.ipv4.ip_forward</code> kernel parameter to 1, enabling IP forwarding.</li>
+<li><code>sysctl -p</code>: Loads the kernel parameters from the <code>/etc/sysctl.conf</code> file.</li>
+<li><code>sysctl -w net.core.somaxconn=1024</code>: Sets the maximum number of queued connection requests.</li>
+</ul>
+<h2 id="openssl">openssl</h2>
+<p><code>openssl</code> is a command-line tool used to generate and manage SSL/TLS certificates, which are used for secure network connections.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>openssl req -new -x509 -keyout &lt;key_file&gt; -out &lt;cert_file&gt;</code>: Generates a new self-signed X.509 certificate and private key.</li>
+<li><code>openssl x509 -in &lt;cert_file&gt; -text -noout</code>: Displays the contents of an X.509 certificate.</li>
+<li><code>openssl rsa -in &lt;key_file&gt; -check</code>: Verifies the integrity of a private key.</li>
+<li><code>openssl s_client -connect &lt;host&gt;:&lt;port&gt;</code>: Establishes a TLS connection to the specified host and port.</li>
+<li><code>openssl dhparam -out &lt;dhparam_file&gt; 2048</code>: Generates Diffie-Hellman parameters for use in TLS configurations.</li>
+</ul>
+<h2 id="stunnel">stunnel</h2>
+<p><code>stunnel</code> is a command-line tool used to create an SSL/TLS proxy, which can be used to secure network connections to an insecure server.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>stunnel &lt;config_file&gt;</code>: Runs stunnel using the specified configuration file.</li>
+<li><code>stunnel -p &lt;cert_file&gt; -k &lt;key_file&gt;</code>: Runs stunnel with the specified certificate and private key files.</li>
+<li><code>stunnel -c -d &lt;local_port&gt; -r &lt;remote_host&gt;:&lt;remote_port&gt;</code>: Runs stunnel in client mode, forwarding local connections to a remote host and port.</li>
+<li><code>stunnel -l &lt;local_port&gt; -r &lt;remote_host&gt;:&lt;remote_port&gt;</code>: Runs stunnel in server mode, accepting local connections and forwarding them to a remote host and port.</li>
+<li><code>stunnel -v</code>: Runs stunnel in verbose mode, providing more detailed logging.</li>
+</ul>
+<h2 id="iptrafnethogs">iptraf/nethogs</h2>
+<p><code>iptraf</code> and <code>nethogs</code> are command-line tools used to provide real-time information about network bandwidth usage and performance.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>iptraf -i &lt;interface&gt;</code>: Runs the interactive iptraf tool, displaying network traffic statistics for the specified interface.</li>
+<li><code>iptraf -s &lt;interface&gt;</code>: Runs iptraf in server mode, writing the traffic statistics to a log file.</li>
+<li><code>nethogs &lt;interface&gt;</code>: Runs the nethogs tool, which displays the network traffic per process.</li>
+<li><code>nethogs -t</code>: Runs nethogs in terse mode, showing only the process names and their network usage.</li>
+<li><code>nethogs -u</code>: Runs nethogs in user mode, showing the network usage per user instead of per process.</li>
+</ul>
+<h2 id="abjmeterwrk">ab/JMeter/wrk</h2>
+<p><code>ab</code> (Apache Bench), <code>JMeter</code>, and <code>wrk</code> are popular benchmarking tools used for testing the performance of web servers and APIs.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>ab -n &lt;requests&gt; -c &lt;concurrency&gt; &lt;url&gt;</code>: Runs the Apache Bench tool, performing the specified number of requests with the given concurrency level.</li>
+<li><code>jmeter -n -t &lt;jmx_file&gt; -l &lt;results_file&gt;</code>: Runs JMeter in non-GUI mode, using the specified test plan file and writing the results to a file.</li>
+<li><code>wrk -t&lt;threads&gt; -c&lt;connections&gt; -d&lt;duration&gt; &lt;url&gt;</code>: Runs the wrk tool, simulating the specified number of threads and connections for the given duration.</li>
+<li><code>jmeter -h</code>: Displays the help menu for the JMeter command-line options.</li>
+<li><code>wrk --latency &lt;url&gt;</code>: Runs wrk and displays the latency statistics in addition to the throughput.</li>
+</ul>
+<h2 id="python-m-simplehttpserver">python -m SimpleHTTPServer</h2>
+<p>The <code>python -m SimpleHTTPServer</code> command can be used to quickly serve files from the current directory using a simple HTTP server.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>python -m SimpleHTTPServer &lt;port&gt;</code>: Starts a simple HTTP server on the specified port, serving files from the current directory.</li>
+<li><code>python -m http.server &lt;port&gt;</code>: The Python 3 equivalent of the above command, starting a simple HTTP server on the specified port.</li>
+<li><code>python -m SimpleHTTPServer</code>: Starts a simple HTTP server on the default port 8000, serving files from the current directory.</li>
+<li><code>python -m http.server</code>: The Python 3 equivalent of the above command, starting a simple HTTP server on the default port 8000.</li>
+<li><code>python -m SimpleHTTPServer --help</code>: Displays the available options for the SimpleHTTPServer module.</li>
+</ul>
+<h2 id="ipealc">ipealc</h2>
+<p><code>ipealc</code> is a command-line tool used to calculate IP addresses and subnet information.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>ipealc &lt;ip_address&gt; &lt;subnet_mask&gt;</code>: Calculates the network address, broadcast address, and available host range for the specified IP address and subnet mask.</li>
+<li><code>ipealc -c &lt;cidr_notation&gt;</code>: Calculates the subnet mask and other information based on the CIDR notation.</li>
+<li><code>ipealc -n &lt;network_address&gt; &lt;prefix_length&gt;</code>: Calculates the network information based on the network address and prefix length.</li>
+<li><code>ipealc -h</code>: Displays the help menu for the ipealc tool, including all available options and usage examples.</li>
+<li><code>ipealc -v</code>: Displays the version information for the ipealc tool.</li>
+</ul>
+<h2 id="nsenter">nsenter</h2>
+<p><code>nsenter</code> is a command-line tool used to enter a container's network namespace, allowing you to troubleshoot and manage the container's network settings.</p>
+<p><strong>Usage Examples:</strong></p>
+<ul>
+<li><code>nsenter -t &lt;container_pid&gt; -n &lt;command&gt;</code>: Runs the specified command in the context of the container's network namespace.</li>
+<li><code>nsenter -t &lt;container_pid&gt; -n ip addr</code>: Displays the network interfaces and IP addresses within the container's network namespace.</li>
+<li><code>nsenter -t &lt;container_pid&gt; -n ip route</code>: Displays the routing table within the container's network namespace.</li>
+<li><code>nsenter -t &lt;container_pid&gt; -n tcpdump -i eth0</code>: Captures network traffic within the container's network namespace.</li>
+<li><code>nsenter -t &lt;container_pid&gt; -n /bin/bash</code>: Starts an interactive shell within the context of the container's network namespace.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
