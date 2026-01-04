@@ -1,0 +1,3504 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../scientists/Keplers/">
+      
+      
+        <link rel="next" href="../../cybersecurity/cybsec/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Reading Papers - Am I Learning Enough</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/goatcounter.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+  
+      
+
+    
+  
+  <script data-goatcounter="https://learningresource.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  
+
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-systems-research-paper-reading-list" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Am I Learning Enough" class="md-header__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Am I Learning Enough
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reading Papers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly/asm/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../roadmap/dsa/dsa/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Roadmaps
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Am I Learning Enough" class="md-nav__button md-logo" aria-label="Am I Learning Enough" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Am I Learning Enough
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly/asm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assembly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheatsheets
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cheatsheets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/riscv-32bit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RISC-V 32-bit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computerArchitecture/compArch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Embedded Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/embedded-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded/rtos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTOS Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scientists
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scientists
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scientists/Keplers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kepler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading Papers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading Papers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#database-systems-research-paper-reading-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Systems Research Paper Reading List
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cybersecurity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cybersecurity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cybersecurity/cybsec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CybSec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/bpftrace-eBPF-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BPF Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-networking-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-perf-benchmark-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-performace-tuning-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/linux-static-performace-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Performance Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/sed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/unix-file-system-hierarachy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File System Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Machine Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/underTheHoodOfNeuralNetwork/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Under The Hood of Neural Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operating System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operating System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/Readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cacheMemory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cache Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/conceptOfVirtualMem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept of Virtual Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/contiguousMemAlloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contiguous Memory Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/cpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskFragmentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Fragmentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/diskStructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/distributedSystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributed Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/embeddedOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystemImplementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File System Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/fileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/freeSpaceManagement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Free Space Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputHardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input/Output Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputSoftware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input/Output Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/inputOutputTechniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input/Output Techniques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/interrupts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/kernelIOSubsystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel I/O Subsystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/layeredArchitecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layered Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/logicalVsPhysicalAddresses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logical vs Physical Addresses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/memoryMappedFiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Mapped Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/microKernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microkernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/monolithicKernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monolithic Kernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/osDesignAndImplementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS Design and Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/pageReplacementAlgo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Page Replacement Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/paging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processAndThreads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process and Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processManagementStructures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process Management Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/processScheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/protectionInOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protection in OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/realTimeOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityMechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/securityThreatsAndAttacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Threats and Attacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/segmentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Segmentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/softwareLayers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/systemCalls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Calls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/thrashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thrashing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operatingSystem/vonNeumannArchitecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Von Neumann Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmaps
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmaps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/dsa/dsaUsingC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSA using C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Machine Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/ml/neuralNetsWithC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neural Networks with C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OS Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/knowC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    With C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/os-dev/noC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Without C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reverse Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reverse Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/reverse-engineering/reverse-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Programming
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Programming
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../roadmap/system-programming/ultimate-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#database-systems-research-paper-reading-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Systems Research Paper Reading List
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+  <h1>Reading Papers</h1>
+
+<h3 id="database-systems-research-paper-reading-list">Database Systems Research Paper Reading List</h3>
+<p>This lecture curriculum is of CMU DB Intro Course by Andy Pavlo.
+You can find more details on the course <a href="https://15445.courses.cs.cmu.edu/fall2024/">here</a> </p>
+<table>
+<thead>
+<tr>
+<th>Lecture #</th>
+<th>Lecture Name</th>
+<th>Research Papers (Unique Links)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00</strong></td>
+<td>Course Overview &amp; Logistics</td>
+<td>• <a href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">A Relational Model of Data for Large Shared Data Banks</a><br>• <a href="https://dsf.berkeley.edu/papers/fntdb07-architecture.pdf">Architecture of a Database System</a><br>• <a href="https://people.cs.umass.edu/~yanlei/courses/CS691LL-f06/papers/SH05.pdf">What Goes Around Comes Around</a><br>• <a href="https://dl.acm.org/doi/10.1145/142414.142423">Reflections on the Future of Database Systems</a></td>
+</tr>
+<tr>
+<td><strong>01</strong></td>
+<td>Relational Model &amp; Algebra</td>
+<td>• <a href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">A Relational Model of Data for Large Shared Data Banks</a><br>• <a href="https://dl.acm.org/doi/10.1145/362384.362685">Relational Algebra and Relational Calculus</a><br>• <a href="https://dl.acm.org/doi/10.1145/362384.362685">Derivability, Redundancy, and Consistency of Relations</a><br>• <a href="https://dl.acm.org/doi/10.1109/TR.1983.5221735">The Transaction Concept: Virtues and Limitations</a><br>• <a href="https://dl.acm.org/doi/10.1145/1046933.1046940">A Critique of the SQL Database Language</a><br>• <a href="https://www.dcs.warwick.ac.uk/~hugh/TTM/DTATRM.pdf">The Third Manifesto</a><br>• <a href="https://webdam.inria.fr/Alice/">Foundations of Databases</a><br>• <a href="https://dsf.berkeley.edu/papers/fntdb07-opt4.pdf">Access Path Selection in a Relational Database Management System</a></td>
+</tr>
+<tr>
+<td><strong>02</strong></td>
+<td>Modern SQL</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/846150.846151">SQL:1999, Formerly Known as SQL3</a><br>• <a href="https://dl.acm.org/doi/10.5555/940308">Advanced SQL:1999</a><br>• <a href="https://ieeexplore.ieee.org/document/6171608">SQL:2011 - Under the Covers</a><br>• <a href="https://dl.acm.org/doi/10.1145/1247480.1247646">Pivoted Knowledge</a><br>• <a href="https://dl.acm.org/doi/10.1145/971701.50214">A Decomposition Storage Model</a><br>• <a href="https://www.iso.org/standard/45498.html">SQL:1999, SQL:2003, SQL:2006</a><br>• <a href="https://dl.acm.org/doi/10.1145/2695667">Temporal Support in SQL:2011</a><br>• <a href="https://dl.acm.org/doi/10.14778/2002938.2002940">Efficiently Compiling Efficient Query Plans</a><br>• <a href="https://people.csail.mit.edu/matei/papers/2015/sigmod_spark_sql.pdf">Spark SQL: Relational Data Processing in Spark</a><br>• <a href="https://www.cockroachlabs.com/blog/paper-reading-cockroachdb/">CockroachDB: The Resilient Geo-Distributed SQL Database</a></td>
+</tr>
+<tr>
+<td><strong>03</strong></td>
+<td>Database Storage I</td>
+<td>• <a href="https://dl.acm.org/doi/10.1561/1900000024">The Design and Implementation of Modern Column-Oriented Database Systems</a><br>• <a href="https://dl.acm.org/doi/10.5555/1083592.1083658">C-Store: A Column-oriented DBMS</a><br>• <a href="https://www.usenix.org/legacy/event/usenix08/tech/full_papers/agrawal/agrawal.pdf">Design Tradeoffs for SSD Performance</a><br>• <a href="https://dl.acm.org/doi/10.1145/1594204.1594207">A Five-Minute Rule for Modern Storage Media</a><br>• <a href="https://dl.acm.org/doi/10.1145/304182.304211">Database Architecture Optimized for Memory Access</a><br>• <a href="https://cs.stanford.edu/people/chrismre/cs345/rl/aries.pdf">ARIES: A Transaction Recovery Method</a><br>• <a href="https://people.eecs.berkeley.edu/~brewer/cs262/LFS.pdf">The Design and Implementation of a Log-Structured File System</a><br>• <a href="https://github.com/google/leveldb">LevelDB Documentation</a><br>• <a href="https://github.com/LMDB/lmdb">LMDB: Memory-Mapped Key-Value Storage</a></td>
+</tr>
+<tr>
+<td><strong>04</strong></td>
+<td>Database Storage II</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/128765.128770">ARIES: Fine-Granularity Locking and Partial Rollbacks</a><br>• <a href="https://dl.acm.org/doi/10.1007/s002360050048">The Log-Structured Merge-Tree (LSM-Tree)</a><br>• <a href="https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf">WiscKey: Separating Keys from Values in SSD-Conscious Storage</a><br>• <a href="https://dl.acm.org/doi/10.1145/1559845.1559865">A Comparison of Approaches to Large-Scale Data Analysis</a><br>• <a href="https://dl.acm.org/doi/10.14778/2002938.2002940">Efficiently Compiling Efficient Query Plans</a><br>• <a href="https://www.hpl.hp.com/techreports/tandem/TR-86.1.pdf">The 5 Minute Rule for Trading Memory for Disk Accesses</a><br>• <a href="https://dl.acm.org/doi/10.1145/971697.602294">The DBMIN Storage Manager</a><br>• <a href="https://dl.acm.org/doi/10.1145/3183713.3196896">LeanStore: In-Memory Data Management</a><br>• <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf">The Bw-Tree: A B-tree for New Hardware Platforms</a></td>
+</tr>
+<tr>
+<td><strong>05</strong></td>
+<td>Storage Models &amp; Compression</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/1376616.1376712">Column-Stores vs. Row-Stores</a><br>• <a href="https://dl.acm.org/doi/10.1145/1142473.1142548">Integrating Compression and Execution in Column-Oriented Databases</a><br>• <a href="https://dl.acm.org/doi/10.1145/3183713.3196937">Data Blocks: Hybrid OLTP and OLAP</a><br>• <a href="https://dl.acm.org/doi/10.5555/1083592.1083600">MonetDB/X100: Hyper-Pipelining Query Execution</a><br>• <a href="https://dl.acm.org/doi/10.14778/3229863.3229867">Database Cracking: Fancy Scan, not Poor Man's Sort!</a><br>• <a href="https://github.com/facebook/zstd">ZStandard: Fast and Efficient Compression</a><br>• <a href="https://dl.acm.org/doi/10.1145/2723372.2742795">Amazon Redshift and Simpler Data Warehouses</a></td>
+</tr>
+<tr>
+<td><strong>06</strong></td>
+<td>Memory Management</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/1270.1271">Buffer Management in Database Systems</a><br>• <a href="https://dl.acm.org/doi/10.1145/271074.271094">The Five-Minute Rule Ten Years Later</a><br>• <a href="https://dl.acm.org/doi/10.1145/2463676.2465270">Managing Non-Volatile Memory</a><br>• <a href="https://dl.acm.org/doi/10.1145/1989323.1989328">Main Memory Hash Join Algorithms</a><br>• <a href="https://people.cs.umass.edu/~emery/pubs/berger-pldi00.pdf">Memory Management for High-Performance Applications</a><br>• <a href="https://ieeexplore.ieee.org/document/5447811">C-ARF: Clock-Based Adaptive Replacement Filter</a><br>• <a href="https://arxiv.org/pdf/1901.08255">Optimizing In-Memory Databases for AI Workloads</a></td>
+</tr>
+<tr>
+<td><strong>07</strong></td>
+<td>Hash Tables</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/320083.320092">Extendible Hashing—A Fast Access Method</a><br>• <a href="https://dl.acm.org/doi/10.5555/1286831.1286848">Linear Hashing: A New Tool for File Addressing</a><br>• <a href="https://dl.acm.org/doi/10.1145/62084.62087">Dynamic Hash Tables</a><br>• <a href="https://dl.acm.org/doi/10.1145/1106014.1106034">Cache-Conscious Collision Resolution</a><br>• <a href="https://dl.acm.org/doi/10.1007/3-540-48058-0_9">Cuckoo Hashing</a><br>• <a href="https://dl.acm.org/doi/10.1007/978-3-540-87779-0_24">Hopscotch Hashing</a><br>• <a href="https://cs.uwaterloo.ca/research/tr/1985/CS-85-12.pdf">Robin Hood Hashing</a></td>
+</tr>
+<tr>
+<td><strong>08</strong></td>
+<td>Indexes &amp; Filters I</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/356770.356776">Ubiquitous B-Tree</a><br>• <a href="https://dl.acm.org/doi/10.1145/971697.602266">R-Trees: A Dynamic Index Structure</a><br>• <a href="https://dl.acm.org/doi/10.1145/93597.98741">The R*-Tree: Efficient and Robust Access</a><br>• <a href="https://www.eecs.harvard.edu/~michaelm/postscripts/im2005b.pdf">Bloom Filters in Probabilistic Verification</a><br>• <a href="https://dl.acm.org/doi/10.5555/645925.671362">Cache-Conscious Indexing</a><br>• <a href="https://www.cs.cmu.edu/~dga/papers/cuckoo-conext2014.pdf">Cuckoo Filter: Practically Better Than Bloom</a></td>
+</tr>
+<tr>
+<td><strong>09</strong></td>
+<td>Indexes &amp; Filters II</td>
+<td>• <a href="https://db.in.tum.de/~leis/papers/ART.pdf">The Adaptive Radix Tree (ART)</a><br>• <a href="https://dl.acm.org/doi/10.1145/1807167.1807206">FAST: Fast Architecture Sensitive Tree Search</a><br>• <a href="https://dl.acm.org/doi/10.1145/253262.253268">Bitmap Index Design and Evaluation</a><br>• <a href="https://arxiv.org/abs/2203.00482">Less is More: Lightweight Filter Design</a><br>• <a href="https://www.microsoft.com/en-us/research/publication/the-bw-tree-a-b-tree-for-new-hardware/">The Bw-Tree: A B-tree for New Hardware</a><br>• <a href="https://www.cs.umb.edu/~poneil/lsmtree.pdf">The Log-Structured Merge-Tree (LSM-Tree)</a><br>• <a href="https://dl.acm.org/doi/10.14778/3407790.3407853">TiDB: A Raft-Based HTAP Database</a></td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Index Concurrency Control</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/319628.319650">Optimistic Methods for Concurrency Control</a><br>• <a href="https://dl.acm.org/doi/10.1109/ICDE.2000.839452">Generalized Isolation Level Definitions</a><br>• <a href="https://dl.acm.org/doi/10.5555/1241882.1241895">Granularity of Locks and Degrees of Consistency</a><br>• <a href="https://dl.acm.org/doi/10.5555/1287369.1287455">A Case for Fractured Mirrors</a><br>• <a href="https://dl.acm.org/doi/10.1145/235968.233333">Implementing Data Cubes Efficiently</a><br>• <a href="https://www.csd.uoc.gr/~hy460/pdf/p650-lehman.pdf">Efficient Locking for B-Trees</a><br>• <a href="https://pdos.csail.mit.edu/papers/masstree:eurosys12.pdf">MassTree: A Cache-Conscious Concurrent B+-Tree</a></td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>Sorting &amp; Aggregation Algorithms</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/191843.191970">AlphaSort: A RISC Machine Sort</a><br>• <a href="https://dl.acm.org/doi/10.1145/170036.170058">Efficient External Sorting</a><br>• <a href="https://dl.acm.org/doi/10.1145/1132863.1132865">Implementing Sorting in Database Systems</a><br>• <a href="https://dl.acm.org/doi/10.1145/1376616.1376683">Efficient Aggregation for Graph Summarization</a><br>• <a href="https://dl.acm.org/doi/10.14778/2536336.2536356">Scalable Progressive Analytics</a><br>• <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/40671.pdf">HyperLogLog in Practice</a></td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td>Joins Algorithms</td>
+<td>• <a href="https://dl.acm.org/doi/10.1109/ICDE.2011.5767868">Hash Joins and Hash Teams in SQL Server</a><br>• <a href="https://dl.acm.org/doi/10.1109/ICDE.2013.6544839">Main-Memory Hash Joins on Multi-Core CPUs</a><br>• <a href="https://dl.acm.org/doi/10.14778/1687627.1687645">Sort vs. Hash Revisited</a><br>• <a href="https://dl.acm.org/doi/10.1109/ICDE.2019.00028">A Comparison of Adaptive Radix Trees and Hash Tables</a><br>• <a href="https://dl.acm.org/doi/10.14778/2831360.2831362">Improving Hash Joins on Intel Xeon Phi</a><br>• <a href="https://dsf.berkeley.edu/cs286/papers/gracehash-vldb1984.pdf">Grace Hash Join: A Hybrid Hash Join</a><br>• <a href="https://www.cidrdb.org/cidr1999/P21.pdf">The Radix-Clustered Join Algorithm</a></td>
+</tr>
+<tr>
+<td><strong>13</strong></td>
+<td>Query Execution I</td>
+<td>• <a href="https://dl.acm.org/doi/10.1109/69.273032">Volcano - An Extensible Query Evaluation System</a><br>• <a href="https://dl.acm.org/doi/10.1145/2588555.2610507">Morsel-Driven Parallelism</a><br>• <a href="https://dl.acm.org/doi/10.1109/DEBull.2012.19">Vectorwise: Beyond Column Stores</a><br>• <a href="https://dl.acm.org/doi/10.1109/ICDE.2018.00025">Adaptive Execution of Compiled Queries</a><br>• <a href="https://dl.acm.org/doi/10.14778/3275366.3284966">Everything About Compiled and Vectorized Queries</a><br>• <a href="https://dl.acm.org/doi/10.14778/2732977.2732983">Morsel-Driven Parallelism (NUMA-Aware)</a></td>
+</tr>
+<tr>
+<td><strong>14</strong></td>
+<td>Query Execution II</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/3183713.3196935">How to Architect a Query Compiler</a><br>• <a href="https://dl.acm.org/doi/10.14778/3137628.3137633">Relaxed Operator Fusion</a><br>• <a href="https://dl.acm.org/doi/10.1109/MC.2007.147">Adaptive Query Processing: Technology in Evolution</a><br>• <a href="https://dl.acm.org/doi/10.14778/1920841.1920886">Dremel: Interactive Analysis of Web-Scale Datasets</a><br>• <a href="https://clickhouse.com/docs/en/development/architecture">ClickHouse: High-Performance Column-Oriented DB</a><br>• <a href="https://dl.acm.org/doi/10.1145/3299869.3319881">Vectorized Execution for Query Engines</a></td>
+</tr>
+<tr>
+<td><strong>15</strong></td>
+<td>Query Planning &amp; Optimization</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/582095.582099">Access Path Selection in a Relational DBMS</a><br>• <a href="https://dl.acm.org/doi/10.1109/ICDE.1993.344061">The Volcano Optimizer Generator</a><br>• <a href="https://dl.acm.org/doi/10.5555/671310">The Cascades Framework</a><br>• <a href="https://dl.acm.org/doi/10.1145/275487.275492">An Overview of Query Optimization</a><br>• <a href="https://dl.acm.org/doi/10.1145/2619228.2619231">Orca: A Modular Query Optimizer</a><br>• <a href="https://dsf.berkeley.edu/cs286/papers/eddy-sigmod2000.pdf">Eddy: Continuously Adaptive Query Processing</a></td>
+</tr>
+<tr>
+<td><strong>16</strong></td>
+<td>Concurrency Control Theory</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/223784.223785">A Critique of ANSI SQL Isolation Levels</a><br>• <a href="https://dl.acm.org/doi/10.1145/356842.356846">Concurrency Control in Distributed Databases</a><br>• <a href="https://dl.acm.org/doi/10.1145/800152.804484">A Majority Consensus Approach</a><br>• <a href="https://dl.acm.org/doi/10.1145/1376616.1376690">Serializable Isolation for Snapshot Databases</a><br>• <a href="https://dsf.berkeley.edu/cs286/papers/graymvcc-cacm1976.pdf">Granularity of Locks and Degrees of Consistency</a></td>
+</tr>
+<tr>
+<td><strong>17</strong></td>
+<td>Two-Phase Locking Concurrency Control</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/2845.2847">An Algorithm for Concurrency Control in Distributed DB</a><br>• <a href="https://dl.acm.org/doi/10.1145/45267.45288">Distributed Deadlock Detection</a><br>• <a href="https://dl.acm.org/doi/10.5555/646484.694342">Hierarchical Locking in B-tree Indexes</a><br>• <a href="https://dl.acm.org/doi/10.1145/319628.319651">Strict 2PL: A High-Performance Locking Protocol</a><br>• <a href="https://dl.acm.org/doi/10.1109/MIS.2002.1039831">Locking in Databases: A Survey</a></td>
+</tr>
+<tr>
+<td><strong>18</strong></td>
+<td>Timestamp Ordering Concurrency Control</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/3007165.3007176">Distributed Timestamp Order Concurrency Control</a><br>• <a href="https://ieeexplore.ieee.org/document/379681">Timestamp-Based Protocols for Distributed DB</a><br>• <a href="https://ieeexplore.ieee.org/document/1385504">Timestamp-Based Concurrency Control for Heterogeneous DB</a><br>• <a href="https://dl.acm.org/doi/10.1109/IDEAS.2004.1319800">Timestamp-Based Two-Phase Locking</a><br>• <a href="https://dl.acm.org/doi/10.1109/71.80124">An Implementation of Causal Ordering</a><br>• <a href="https://dl.acm.org/doi/10.1145/2517349.2522712">Silo: Speeding Up In-Memory Databases with Hardware Transactions</a></td>
+</tr>
+<tr>
+<td><strong>19</strong></td>
+<td>Multi-Version Concurrency Control</td>
+<td>• <a href="https://dl.acm.org/doi/10.14778/2556549.2556562">High-Performance Concurrency Control for Main-Memory DB</a><br>• <a href="https://dl.acm.org/doi/10.14778/2168651.2168659">Serializable Snapshot Isolation in PostgreSQL</a><br>• <a href="https://dl.acm.org/doi/10.14778/3137628.3137641">An Empirical Evaluation of MVCC</a><br>• <a href="https://dl.acm.org/doi/10.1145/3035918.3064015">Cicada: Dependably Fast Multi-Core Transactions</a><br>• <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/hyder-sigmod2013.pdf">Hyder: A Transactional Record Manager for Shared Flash</a></td>
+</tr>
+<tr>
+<td><strong>20</strong></td>
+<td>Database Logging</td>
+<td>• <a href="https://dl.acm.org/doi/10.14778/2095686.2095689">Lightweight Locking for Main Memory DB</a><br>• <a href="https://dl.acm.org/doi/10.14778/2732240.2732246">Scalable Logging with Non-Volatile Memory</a><br>• <a href="https://dl.acm.org/doi/10.5555/2685048.2685065">Fast Databases with Fast Durability</a><br>• <a href="https://dl.acm.org/doi/10.14778/3137628.3137659">The End of a Myth: Distributed Transactions Can Scale</a><br>• <a href="https://dl.acm.org/doi/10.1145/2588555.2588562">Scalable Atomic Visibility with RAMP Transactions</a><br>• <a href="https://www.kafka.apache.org/">Kafka: A Distributed Messaging System</a></td>
+</tr>
+<tr>
+<td><strong>21</strong></td>
+<td>Database Recovery</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/7474.7477">Recovering With Limited Overlap</a><br>• <a href="https://dl.acm.org/doi/10.5555/1313611.1313615">Crash Recovery in a Distributed System</a><br>• <a href="https://dl.acm.org/doi/10.14778/3352063.3352090">Constant Time Recovery in Azure SQL</a><br>• <a href="https://dl.acm.org/doi/10.1145/3117811.3132479">NVM Write Allocation</a><br>• <a href="https://dl.acm.org/doi/10.1145/2882903.2882942">Fast Recovery in In-Memory Databases</a><br>• <a href="https://dl.acm.org/doi/10.14778/2733004.2733006">Non-Volatile Memory DBMS</a></td>
+</tr>
+<tr>
+<td><strong>22</strong></td>
+<td>Introduction to Distributed Databases</td>
+<td>• <a href="https://dl.acm.org/doi/10.14778/1920841.1920855">The Case for Determinism in DB Systems</a><br>• <a href="https://dl.acm.org/doi/10.5555/1267308.1267323">Bigtable: A Distributed Storage System</a><br>• <a href="https://dl.acm.org/doi/10.1145/1294261.1294281">Dynamo: Amazon’s Highly Available Key-Value Store</a><br>• <a href="https://ieeexplore.ieee.org/document/6133253">CAP Twelve Years Later</a><br>• <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf">Spanner: Google’s Globally-Distributed DB</a></td>
+</tr>
+<tr>
+<td><strong>23</strong></td>
+<td>Distributed OLTP Database Systems</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/2213836.2213838">Calvin: Fast Distributed Transactions</a><br>• <a href="https://dl.acm.org/doi/10.1145/3035918.3056101">Amazon Aurora: Cloud-Native Relational DB</a><br>• <a href="https://dl.acm.org/doi/10.14778/2536222.2536232">F1: A Distributed SQL Database</a><br>• <a href="https://www.microsoft.com/en-us/research/publication/orleans-distributed-virtual-actors-for-programmability-and-scalability/">Orleans: Distributed Virtual Actors</a><br>• <a href="https://dl.acm.org/doi/10.14778/3407790.3407855">SLOG: Serializable, Low-Latency Geo-Replicated Transactions</a></td>
+</tr>
+<tr>
+<td><strong>24</strong></td>
+<td>Distributed OLAP Database Systems</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/3299869.3314040">Presto: SQL on Everything</a><br>• <a href="https://dl.acm.org/doi/10.1145/2723372.2742797">Spark SQL: Relational Data Processing</a><br>• <a href="https://dl.acm.org/doi/10.14778/2944415.2944420">SnowFlake: A Query Workspace</a><br>• <a href="https://arxiv.org/pdf/2003.08236">Apache Druid: Real-Time Analytics DB</a></td>
+</tr>
+<tr>
+<td><strong>25</strong></td>
+<td>Final Review + Systems Potpourri</td>
+<td>• <a href="https://dl.acm.org/doi/10.1145/2940745">What's Really New with NewSQL?</a><br>• <a href="https://dl.acm.org/doi/10.14778/2824032.2824093">The Predictive Database</a><br>• <a href="https://dl.acm.org/doi/10.1109/VLDB.2007.4304066">The End of an Architectural Era</a><br>• <a href="https://dl.acm.org/doi/10.1145/2588555.2611185">Retrospection on DB System Performance</a><br>• <a href="https://dl.acm.org/doi/10.1145/3051024">Research for Practice: Prediction-Serving Systems</a><br>• <a href="https://arxiv.org/pdf/1712.01208">The Case for Learned Index Structures</a><br>• <a href="https://dataintensive.net/">Designing Data-Intensive Applications</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+  <!-- GoatCounter Analytics Widget -->
+  
+  <div class="md-content__inner md-typeset" style="margin-top: 2rem;">
+    <div class="goatcounter-stats" style="padding: 1.5rem; background: var(--md-code-bg-color); border-radius: 0.3rem; border-left: 4px solid var(--md-primary-fg-color);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="margin: 0; color: var(--md-default-fg-color);">📊 Analytics</h3>
+        <a href="https://learningresource.goatcounter.com" 
+           target="_blank" 
+           style="color: var(--md-primary-fg-color); text-decoration: none; font-weight: 500;">
+          View Dashboard →
+        </a>
+      </div>
+      
+      <p style="margin: 0; color: var(--md-default-fg-color--light); font-size: 0.9rem;">
+        📈 This page is being tracked with GoatCounter. 
+        <a href="https://learningresource.goatcounter.com" target="_blank" style="color: var(--md-primary-fg-color);">
+          Click here to view detailed analytics
+        </a> including page views, referrers, and visitor statistics.
+      </p>
+      
+      <!-- Optional: Embed public stats if available -->
+      <div style="margin-top: 1rem;">
+        <details style="cursor: pointer;">
+          <summary style="color: var(--md-primary-fg-color); font-weight: 500;">Show Public Statistics</summary>
+          <div style="margin-top: 1rem; padding: 1rem; background: var(--md-default-bg-color); border-radius: 0.2rem;">
+            <iframe src="https://learningresource.goatcounter.com/counter/resources/database/research-papers/.svg" 
+                    style="border: none; width: 100%; height: 40px;" 
+                    title="GoatCounter Statistics"></iframe>
+            <small style="display: block; margin-top: 0.5rem; color: var(--md-default-fg-color--light);">
+              Live view counter for this page
+            </small>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://gc.zgo.at/count.js"></script>
+      
+    
+  </body>
+</html>
