@@ -1,0 +1,79 @@
+/* GoatCounter Analytics Styles */
+
+.goatcounter-stats {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.goatcounter-stats:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.goatcounter-widget {
+  transition: all 0.3s ease;
+}
+
+.goatcounter-widget:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .goatcounter-stats {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-md-color-scheme="slate"] .goatcounter-stats:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Analytics iframe styling */
+.goatcounter-stats iframe {
+  border-radius: 0.2rem;
+  background: var(--md-default-bg-color);
+}
+
+/* Summary/Details styling for collapsible stats */
+.goatcounter-stats details > summary {
+  list-style: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.goatcounter-stats details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.goatcounter-stats details > summary::before {
+  content: "▶";
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+  color: var(--md-primary-fg-color);
+}
+
+.goatcounter-stats details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .goatcounter-stats {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .goatcounter-stats h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation for view counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.view-count {
+  animation: countUp 0.5s ease;
+} 

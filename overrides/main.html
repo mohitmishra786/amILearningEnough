@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block analytics %}
+  {{ super() }}
+  {% if config.extra.goatcounter %}
+  <script data-goatcounter="https://{{ config.extra.goatcounter.domain }}/count"
+          async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  
+  <!-- GoatCounter Analytics Widget -->
+  {% if config.extra.goatcounter %}
+  <div class="md-content__inner md-typeset" style="margin-top: 2rem;">
+    <div class="goatcounter-stats" style="padding: 1.5rem; background: var(--md-code-bg-color); border-radius: 0.3rem; border-left: 4px solid var(--md-primary-fg-color);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="margin: 0; color: var(--md-default-fg-color);">📊 Analytics</h3>
+        <a href="https://{{ config.extra.goatcounter.domain }}" 
+           target="_blank" 
+           style="color: var(--md-primary-fg-color); text-decoration: none; font-weight: 500;">
+          View Dashboard →
+        </a>
+      </div>
+      
+      <p style="margin: 0; color: var(--md-default-fg-color--light); font-size: 0.9rem;">
+        📈 This page is being tracked with GoatCounter. 
+        <a href="https://{{ config.extra.goatcounter.domain }}" target="_blank" style="color: var(--md-primary-fg-color);">
+          Click here to view detailed analytics
+        </a> including page views, referrers, and visitor statistics.
+      </p>
+      
+      <!-- Optional: Embed public stats if available -->
+      <div style="margin-top: 1rem;">
+        <details style="cursor: pointer;">
+          <summary style="color: var(--md-primary-fg-color); font-weight: 500;">Show Public Statistics</summary>
+          <div style="margin-top: 1rem; padding: 1rem; background: var(--md-default-bg-color); border-radius: 0.2rem;">
+            <iframe src="https://{{ config.extra.goatcounter.domain }}/counter/{{ page.url | default('') }}.svg" 
+                    style="border: none; width: 100%; height: 40px;" 
+                    title="GoatCounter Statistics"></iframe>
+            <small style="display: block; margin-top: 0.5rem; color: var(--md-default-fg-color--light);">
+              Live view counter for this page
+            </small>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %} 
