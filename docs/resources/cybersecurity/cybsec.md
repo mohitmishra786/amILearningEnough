@@ -66,6 +66,7 @@
 - [OverTheWire](https://overthewire.org) - Security wargames
 - [TCM Security](https://tcm-sec.com) - Security training and labs
 - [Let's Defend](https://letsdefend.io) - Blue team training platform
+- [ExamWizardz](https://www.examwizardz.app/pbq-practice) - Free CompTIA A+ performance-based question practice
 
 ### Mobile Apps
 - Learn Cybersecurity
